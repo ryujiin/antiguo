@@ -64,9 +64,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-import dj_database_url
+#import dj_database_url
 
-DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] =  dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -101,8 +101,8 @@ CURRENCY_DEFAULT = 'S/.'
 THUMBNAIL_FORMAT = 'PNG'
 
 DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = 'AKIAIBYZVKAEA42V2W7A'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAIOQVODZOP7AWZMGA'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'apiloviz'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
