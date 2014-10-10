@@ -69,7 +69,7 @@ class Producto(models.Model):
 			descuento= precio*oferta/100
 			precio = precio - descuento
 		else:
-			precio = 0
+			precio = self.get_precio_lista()
 		return precio
 			
 
