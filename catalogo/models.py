@@ -57,7 +57,7 @@ class Categoria(models.Model):
 	imagen = models.ImageField(upload_to='categories',blank=True,null=True,max_length=250)
 	
 	def __unicode__(self):
-		return self.full_name
+		return self.nombre
 
 	def save(self, *args, **kwargs):
 		if not self.full_name:
