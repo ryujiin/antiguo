@@ -37,6 +37,38 @@ class Producto(models.Model):
 		url ="%s%s" %(settings.S3_URL,img.name)
 		return url
 
+	def get_en_oferta(self):
+		variaciones = self.get_variaciones()
+		for varia in variaciones:
+			if varia.oferta != 0:
+				return True
+		return False
+
+	def get_variaciones(self):
+		variaciones = ProductoVariacion.objects.filter(producto=self).order_by('-oferta')
+		return variaciones
+
+	def get_precio_lista(self):
+		en_oferta = self.get_en_oferta()
+		if en_oferta:
+			variaciones=self.get_variaciones()
+		else:
+			variaciones = ProductoVariacion.objects.filter(producto=self).order_by('-precio_minorista')
+		return variaciones[0].precio_minorista
+
+	def get_precio_oferta_lista(self):
+		en_oferta = self.get_en_oferta()
+		if en_oferta:
+			variaciones=self.get_variaciones()
+			precio = variaciones[0].precio_minorista
+			oferta = variaciones[0].oferta
+			descuento= precio*oferta/100
+			precio = precio - descuento
+		else:
+			precio = 0
+		return precio
+			
+
 class Color(models.Model):
 	nombre = models.CharField(max_length=100)
 
@@ -77,4 +109,18 @@ class Estilo(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
-    
+
+class ProductoVariacion(models.Model):
+	producto = models.ForeignKey(Producto,related_name='variaciones')
+	talla = models.ForeignKey(Talla)
+	precio_minorista = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True)
+	oferta = models.PositiveIntegerField(default=0)
+
+	def __unicode__(self):
+		return "%s-%s" %(self.producto,self.precio_minorista)
+
+class ProductoImagen(models.Model):
+	producto = models.ForeignKey(Producto,related_name="imagenes_producto")
+	foto = models.ImageField(upload_to="catalogo/producto/imagen/")
+	creado = models.DateTimeField(auto_now_add=True)
+	actualizado = models.DateTimeField(auto_now=True)
