@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'storages',
     'gunicorn',
     'sorl.thumbnail',
@@ -53,6 +54,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 )
 
 ROOT_URLCONF = 'api.urls'
@@ -116,6 +119,10 @@ STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 THUMBNAIL_STORAGE ='storages.backends.s3boto.S3BotoStorage'
 
 S3_URL = 'http://%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
+
+CORS_ORIGIN_WHITELIST = (
+    'lovizdelcarpio.com',
+)
 
 try:
     from .local import *
