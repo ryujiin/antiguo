@@ -71,6 +71,10 @@ class Producto(models.Model):
 		else:
 			precio = self.get_precio_lista()
 		return precio
+
+	def get_parientes(self):
+		parientes = self.parientes.all()
+		return parientes
 			
 
 class Color(models.Model):
@@ -122,6 +126,11 @@ class ProductoVariacion(models.Model):
 
 	def __unicode__(self):
 		return "%s-%s" %(self.producto,self.precio_minorista)
+
+	def get_precio_venta(self):
+		descuento= self.precio_minorista*self.oferta/100
+		precio = self.precio_minorista - descuento
+		return precio
 
 def url_imagen_pr(self,filename):
 	url = "productos/imagen/%s/%s" % (self.producto.pk, filename)

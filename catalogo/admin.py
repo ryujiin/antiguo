@@ -10,7 +10,8 @@ class VariacionInline(admin.TabularInline):
 
 class ProductoAdmin(admin.ModelAdmin):
 	inlines = [ProductoImagenInline,VariacionInline]
-	list_display = ('id','full_name','nombre','slug','get_en_oferta','get_variaciones','get_precio_lista','get_precio_oferta_lista')
+	filter_horizontal = ('parientes',)
+	list_display = ('full_name','nombre','slug','get_parientes')
 
 
 admin.site.register(Producto,ProductoAdmin)

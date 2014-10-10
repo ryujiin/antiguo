@@ -4,12 +4,13 @@ from django.contrib import admin
 from django.conf import settings
 
 from rest_framework import routers
-from catalogo.views import CategoriaViewsets,ProductoListaViewsets
+from catalogo.views import CategoriaViewsets,ProductoListaViewsets,ProductoSingleViewsets
 
 router = routers.DefaultRouter()
 
 router.register(r'listaproducto', ProductoListaViewsets)
 router.register(r'categoria', CategoriaViewsets)
+router.register(r'productosingle', ProductoSingleViewsets)
 
 urlpatterns = patterns('',
     # Examples:
