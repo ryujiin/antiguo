@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from sorl.thumbnail import get_thumbnail
+from django.conf import settings
 
 # Create your models here.
 class Producto(models.Model):
@@ -32,8 +33,9 @@ class Producto(models.Model):
 
 	def get_thum(self):
 		img = get_thumbnail(self.imagen, '160x100', quality=99)
-		#img = self.imagen.url
-		return img
+
+		url ="%s%s" %(settings.S3_URL,img.name)
+		return url
 
 class Color(models.Model):
 	nombre = models.CharField(max_length=100)

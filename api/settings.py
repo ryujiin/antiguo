@@ -118,7 +118,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 THUMBNAIL_STORAGE ='storages.backends.s3boto.S3BotoStorage'
 
-S3_URL = 'http://%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
+S3_URL = 'https://%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
 
 CORS_ORIGIN_ALLOW_ALL = True
 
