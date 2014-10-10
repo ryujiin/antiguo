@@ -54,7 +54,11 @@ class Producto(models.Model):
 			variaciones=self.get_variaciones()
 		else:
 			variaciones = ProductoVariacion.objects.filter(producto=self).order_by('-precio_minorista')
-		return variaciones[0].precio_minorista
+		if variaciones:
+			precio = variaciones[0].precio_minorista
+		else:
+			precio = 0
+		return precio
 
 	def get_precio_oferta_lista(self):
 		en_oferta = self.get_en_oferta()
