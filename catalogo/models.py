@@ -33,7 +33,7 @@ class Producto(models.Model):
 
 	def get_thum(self):
 		img = get_thumbnail(self.imagen, '160x100', quality=99)
-
+		print img
 		url ="%s%s" %(settings.S3_URL,img.name)
 		return url
 
@@ -123,8 +123,12 @@ class ProductoVariacion(models.Model):
 	def __unicode__(self):
 		return "%s-%s" %(self.producto,self.precio_minorista)
 
+def url_imagen_pr(self,filename):
+	url = "productos/imagen/%s/%s" % (self.producto.pk, filename)
+	return url
+
 class ProductoImagen(models.Model):
 	producto = models.ForeignKey(Producto,related_name="imagenes_producto")
-	foto = models.ImageField(upload_to="catalogo/producto/imagen/")
+	foto = models.ImageField(upload_to=url_imagen_pr)
 	creado = models.DateTimeField(auto_now_add=True)
 	actualizado = models.DateTimeField(auto_now=True)
