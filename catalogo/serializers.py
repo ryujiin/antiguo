@@ -59,6 +59,7 @@ class ParienteSerialiezer(serializers.ModelSerializer):
 		return img
 
 class ProductoSingleSereializer(serializers.ModelSerializer):
+	thum = serializers.SerializerMethodField('get_img_thum')
 	categoria= serializers.CharField(read_only=True)
 	estilo= serializers.CharField(read_only=True)
 	color= serializers.CharField(read_only=True)
@@ -70,9 +71,13 @@ class ProductoSingleSereializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Producto
-		fields =('id','nombre','full_name','marca','categoria','estilo','color','slug','activo','imagen_p','descripcion','imagenes_producto','variaciones','parientes')
+		fields =('id','nombre','full_name','marca','categoria','thum','estilo','color','slug','activo','imagen_p','descripcion','imagenes_producto','variaciones','parientes')
 	
 	def get_imagen_aws(self,obj):
 		url = "%s%s" %(settings.S3_URL,obj.imagen.name)
 		return url
+
+	def get_img_thum(self,obj):
+		img = obj.get_thum
+		return img
 
