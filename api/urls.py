@@ -10,7 +10,7 @@ router = routers.DefaultRouter()
 
 router.register(r'listaproducto', ProductoListaViewsets)
 router.register(r'categoria', CategoriaViewsets)
-router.register(r'productosingle', ProductoSingleViewsets)
+router.register(r'productosingle', ProductoSingleViewsets,'productosingle')
 
 urlpatterns = patterns('',
     # Examples:

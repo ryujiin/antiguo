@@ -48,6 +48,16 @@ class ImgProductoSerializer(serializers.ModelSerializer):
 		url = "%s%s" %(settings.S3_URL,obj.foto.name)
 		return url
 
+class ParienteSerialiezer(serializers.ModelSerializer):
+	thum = serializers.SerializerMethodField('get_img_thum')
+	class Meta:
+		model = Producto
+		fields = ('id','nombre','full_name','marca','thum')
+
+	def get_img_thum(self,obj):
+		img = obj.get_thum
+		return img
+
 class ProductoSingleSereializer(serializers.ModelSerializer):
 	categoria= serializers.CharField(read_only=True)
 	estilo= serializers.CharField(read_only=True)
@@ -55,6 +65,8 @@ class ProductoSingleSereializer(serializers.ModelSerializer):
 	imagen_p = serializers.SerializerMethodField('get_imagen_aws')
 	imagenes_producto = ImgProductoSerializer(many=True)
 	variaciones = ProductoVariacionSerializer(many=True)
+
+	parientes = ParienteSerialiezer(many=True)
 
 	class Meta:
 		model = Producto
