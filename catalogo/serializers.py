@@ -52,7 +52,7 @@ class ParienteSerialiezer(serializers.ModelSerializer):
 	thum = serializers.SerializerMethodField('get_img_thum')
 	class Meta:
 		model = Producto
-		fields = ('id','nombre','full_name','marca','thum')
+		fields = ('id','nombre','full_name','marca','thum','slug')
 
 	def get_img_thum(self,obj):
 		img = obj.get_thum
