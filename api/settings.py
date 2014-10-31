@@ -37,11 +37,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #apps de terceros
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'storages',
     'gunicorn',
     'sorl.thumbnail',
+    #mis apps
+    'carro',
     'catalogo',
     'utils',
 )
@@ -125,6 +129,17 @@ CORS_ORIGIN_ALLOW_ALL = True
 #CORS_ORIGIN_WHITELIST = (
 #    'lovizdelcarpio.com',
 #)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
 
 try:
     from .local import *

@@ -1,5 +1,6 @@
 Django==1.7
 Pillow==2.6.0
+PyJWT==0.3.0
 argparse==1.2.1
 boto==2.33.0
 dj-database-url==0.3.0
@@ -7,6 +8,7 @@ dj-static==0.0.6
 django-cors-headers==0.13
 django-storages==1.1.8
 djangorestframework==2.4.3
+djangorestframework-jwt==1.0.2
 gunicorn==19.1.1
 psycopg2==2.5.4
 sorl-thumbnail==11.12.1b
