@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     #mis apps
     'carro',
+    'cliente',
     'catalogo',
     'utils',
 )
@@ -140,6 +141,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
+}
+import datetime
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
 
 try:
