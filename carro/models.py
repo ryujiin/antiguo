@@ -61,14 +61,15 @@ class LineaCarro(models.Model):
 		return "linea de %s con %s articulos de %s" %(self.carro.propietario,self.cantidad,self.variacion)
 
 	def save(self, *args, **kwargs):
-		try:
-			coincidencias = LineaCarro.objects.get(carro=self.carro,variacion=self.variacion)
-		except ObjectDoesNotExist:
-			super(LineaCarro, self).save(*args, **kwargs)
-		else:
-			coincidencias.delete()
-			self.cantidad = coincidencias.cantidad+self.cantidad
-			super(LineaCarro, self).save(*args, **kwargs)
+		if self.carro.estado=='Abierto':			
+			try:
+				coincidencias = LineaCarro.objects.get(carro=self.carro,variacion=self.variacion)
+			except ObjectDoesNotExist:
+				super(LineaCarro, self).save(*args, **kwargs)
+			else:
+				coincidencias.delete()
+				self.cantidad = coincidencias.cantidad+self.cantidad
+				super(LineaCarro, self).save(*args, **kwargs)
 
 class Prueba(models.Model):
 	usuario = models.ForeignKey(User,related_name='MiUSER', null=True,blank=True)

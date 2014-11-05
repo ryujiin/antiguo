@@ -6,6 +6,7 @@ from django.conf import settings
 from rest_framework import routers
 from catalogo.views import CategoriaViewsets,ProductoListaViewsets,ProductoSingleViewsets
 from cliente.views import UsuarioViewSet
+from carro.views import LineasViewsets
 
 router = routers.DefaultRouter()
 
@@ -13,6 +14,7 @@ router.register(r'listaproducto', ProductoListaViewsets)
 router.register(r'categoria', CategoriaViewsets)
 router.register(r'productosingle', ProductoSingleViewsets,'productosingle')
 router.register(r'usuario',UsuarioViewSet)
+router.register(r'lineas',LineasViewsets,'lineas')
 
 urlpatterns = patterns('',
     # Examples:
