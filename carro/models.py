@@ -61,6 +61,16 @@ class LineaCarro(models.Model):
 			precio = precio-oferta
 		return precio
 
+	def get_subtotal(self):
+		descuento = self.variacion.oferta
+		precio = self.variacion.precio_minorista
+		if descuento !=0:
+			precio = precio * descuento/100
+		cantidad = self.cantidad
+		subtotal = cantidad*precio
+		subtotal = "%0.2f" %(subtotal)
+		return subtotal
+
 	def __unicode__(self):
 		return "linea de %s con %s articulos de %s" %(self.carro.propietario,self.cantidad,self.variacion)
 

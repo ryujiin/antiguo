@@ -33,7 +33,6 @@ class Producto(models.Model):
 
 	def get_thum(self):
 		img = get_thumbnail(self.imagen, '160x100', quality=99)
-		print img
 		url ="%s%s" %(settings.S3_URL,img.name)
 		return url
 
@@ -130,6 +129,7 @@ class ProductoVariacion(models.Model):
 	def get_precio_venta(self):
 		descuento= self.precio_minorista*self.oferta/100
 		precio = self.precio_minorista - descuento
+		precio ="%0.2f" %(precio)
 		return precio
 
 def url_imagen_pr(self,filename):
