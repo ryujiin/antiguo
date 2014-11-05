@@ -32,7 +32,11 @@ class Carro(models.Model):
 		return LineaCarro.objects.filter(carro=self)
 
 	def num_lineas(self):
-		return self.all_lineas().count()
+		num = 0
+		lineas = self.all_lineas()
+		for linea in lineas:
+			num = num+linea.cantidad
+		return num
 
 	def save(self, *args, **kwargs):
 		super(Carro, self).save(*args, **kwargs)
