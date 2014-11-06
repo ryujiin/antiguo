@@ -103,6 +103,8 @@ class Categoria(models.Model):
 	def save(self, *args, **kwargs):
 		if not self.full_name:
 			self.full_name = ('%s - %s') %(self.seccion,self.nombre)
+		if not self.slug:
+			self.slug = slugify(self.full_name)
 		super(Categoria, self).save(*args, **kwargs)
 
 class Seccion(models.Model):
