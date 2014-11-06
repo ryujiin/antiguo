@@ -38,6 +38,24 @@ class Carro(models.Model):
 			num = num+linea.cantidad
 		return num
 
+	def subtotal_carro(self):
+		total = 0.0
+		lineas = self.all_lineas()
+		for linea in lineas:
+			subtotal = float(linea.get_subtotal())
+			total = total + subtotal
+		return total
+
+	def total_carro(self):
+		subtotal = self.subtotal_carro()
+		envio = 0
+		total = subtotal + envio
+		return total
+
+	def envio_carro(self):
+		envio = 0
+		return envio
+
 	def save(self, *args, **kwargs):
 		super(Carro, self).save(*args, **kwargs)
 		carros = Carro.objects.filter(Q(propietario=self.propietario) | Q(sesion_carro=self.sesion_carro)).filter(estado=self.ABIERTO).order_by('-pk')[1:]

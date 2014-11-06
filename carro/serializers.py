@@ -5,13 +5,26 @@ from catalogo.models import Producto
 
 class CarroSerializer(serializers.ModelSerializer):
 	lineas = serializers.SerializerMethodField('get_lineas')
-
+	total = serializers.SerializerMethodField('get_total')
+	subtotal = serializers.SerializerMethodField('get_subtotal')
+	envio = serializers.SerializerMethodField('get_envio')
 	class Meta:
 		model = Carro
-		fields = ('id','propietario','estado','sesion_carro','lineas')
+		fields = ('id','propietario','estado','sesion_carro','lineas','total','subtotal','envio')
 
 	def get_lineas(self,obj):
-		return obj.num_lineas()
+		lineas = obj.num_lineas()
+		lineas = int(lineas)
+		return lineas
+
+	def get_total(self,obj):
+		return obj.total_carro()
+
+	def get_subtotal(self,obj):
+		return obj.subtotal_carro()
+
+	def get_envio(self,obj):
+		return obj.envio_carro()
 
 class LineaSerializer(serializers.ModelSerializer):
 	thum = serializers.SerializerMethodField('get_thum')
