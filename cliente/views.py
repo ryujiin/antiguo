@@ -16,14 +16,12 @@ from django.http import HttpResponse, Http404
 class PerfilUserViewSet(APIView):
 	permission_classes = (IsAuthenticated,)
 
-	def get_object(self):
+	def get(self,request,format=None):
 		try:
-			return Cliente.objects.get(usuario=self.request.user)
+			perfil = Cliente.objects.get(usuario=request.user)
 		except Cliente.DoesNotExist:
 			raise Http404
 
-	def get(self,request,format=None):
-		perfil = self.get_object()
 		serializer = PerfilUSerSerializer(perfil)
 		return Response(serializer.data)
 
