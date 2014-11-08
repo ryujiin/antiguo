@@ -18,14 +18,14 @@ class PerfilUserViewSet(APIView):
 
 	def get(self,request,format=None):
 		try:
-			perfil = Cliente.objects.get(usuario=request.user)
-		except Cliente.DoesNotExist:
+			perfil = User.objects.get(pk=request.user.pk)
+		except User.DoesNotExist:
 			raise Http404
 
-		serializer = PerfilUSerSerializer(perfil)
+		serializer = UsuarioSerializer(perfil)
 		return Response(serializer.data)
 
-class UsuarioViewSet(viewsets.ModelViewSet):
+class UsuarioViewSet(viewsets.ReadOnlyModelViewSet):
 	permission_classes = (IsAdminUser,)
 	model = User
 	serializer_class = UsuarioSerializer
