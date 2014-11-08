@@ -58,7 +58,10 @@ class Carro(models.Model):
 
 	def save(self, *args, **kwargs):
 		super(Carro, self).save(*args, **kwargs)
+		if self.propietario:
+			self.sesion_carro = 'ya esta logeado asi que no necesitas cookie'
 		carros = Carro.objects.filter(Q(propietario=self.propietario) | Q(sesion_carro=self.sesion_carro)).filter(estado=self.ABIERTO).order_by('-pk')[1:]
+
 		if carros:
 			for carro in carros:
 				carro.estado = self.CONGELADA
