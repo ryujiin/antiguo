@@ -22,10 +22,12 @@ class CarritoViewsApi(APIView):
 				raise Http404
 		else:
 			coockie_carro = self.request.GET.get('session')
+			
 			try:
 				return Carro.objects.get(sesion_carro=coockie_carro,estado="Abierto")
 			except Carro.DoesNotExist:
 				raise Http404
+
 
 	def get(self,request,format=None):
 		carro = self.get_object()
@@ -66,9 +68,8 @@ class LineasViewsets(viewsets.ModelViewSet):
 	serializer_class = LineaSerializer
 
 	def list(self,request):
-		if self.request.GET:
-			carro = self.request.GET.get('carro')
-		else:
+		carro = request.GET.get('carro')
+		if carro =='':
 			carro = 0
 		queryset = LineaCarro.objects.filter(carro=carro)
 		serializer = LineaSerializer(queryset,many=True)
