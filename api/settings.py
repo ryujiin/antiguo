@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'cliente',
     'catalogo',
     'utils',
+    'ubigeo',
 )
 
 MIDDLEWARE_CLASSES = (

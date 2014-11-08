@@ -7,6 +7,7 @@ from rest_framework import routers
 from catalogo.views import CategoriaViewsets,ProductoListaViewsets,CatalogoViewsets
 from cliente.views import UsuarioViewSet
 from carro.views import LineasViewsets
+from ubigeo.views import RegionViewset
 
 router = routers.DefaultRouter()
 
@@ -15,6 +16,7 @@ router.register(r'categoria', CategoriaViewsets)
 router.register(r'catalogo', CatalogoViewsets,'productosingle')
 router.register(r'usuario',UsuarioViewSet)
 router.register(r'lineas',LineasViewsets,'lineas')
+router.register(r'ubigeo',RegionViewset,'lineas')
 
 urlpatterns = patterns('',
     # Examples:
@@ -26,8 +28,6 @@ urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
-    url(r'^ubigeo/peru/', include('ubigeo.urls')),
-
 
     url(r'^admin/', include(admin.site.urls)),
 )
