@@ -8,8 +8,12 @@ class DireccionSerilizer(serializers.ModelSerializer):
 		model = Direccion
 
 class UsuarioSerializer(serializers.ModelSerializer):
+	direcciones = DireccionSerilizer(many=True)
+
 	class Meta:
 		model = User
+		fields = ('id','username','first_name','last_name','email','is_staff','direcciones')
+
 
 class PerfilUSerSerializer(serializers.ModelSerializer):
 	email = serializers.SerializerMethodField('get_email')
