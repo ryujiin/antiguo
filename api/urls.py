@@ -16,7 +16,7 @@ router.register(r'categoria', CategoriaViewsets)
 router.register(r'catalogo', CatalogoViewsets,'productosingle')
 router.register(r'usuario',UsuarioViewSet)
 router.register(r'lineas',LineasViewsets,'lineas')
-router.register(r'ubigeo',RegionViewset,'lineas')
+router.register(r'ubigeo',RegionViewset,'ubigeo')
 
 urlpatterns = patterns('',
     # Examples:

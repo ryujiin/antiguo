@@ -39,7 +39,7 @@ class Carro(models.Model):
 		return num
 
 	def subtotal_carro(self):
-		total = 0.0
+		total = 0
 		lineas = self.all_lineas()
 		for linea in lineas:
 			subtotal = float(linea.get_subtotal())
@@ -83,13 +83,8 @@ class LineaCarro(models.Model):
 		return precio
 
 	def get_subtotal(self):
-		descuento = self.variacion.oferta
-		precio = self.variacion.precio_minorista
-		if descuento !=0:
-			precio = precio * descuento/100
-		cantidad = self.cantidad
-		subtotal = cantidad*precio
-		subtotal = "%0.2f" %(subtotal)
+		precio = self.get_precio()
+		subtotal = precio * self.cantidad
 		return subtotal
 
 	def __unicode__(self):

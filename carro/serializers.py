@@ -18,10 +18,12 @@ class CarroSerializer(serializers.ModelSerializer):
 		return lineas
 
 	def get_total(self,obj):
-		return obj.total_carro()
+		total =obj.total_carro()
+		return '%0.2f' %(total)
 
 	def get_subtotal(self,obj):
-		return obj.subtotal_carro()
+		subtotal = obj.subtotal_carro()
+		return "%0.2f" %(subtotal)
 
 	def get_envio(self,obj):
 		return obj.envio_carro()
@@ -32,12 +34,13 @@ class LineaSerializer(serializers.ModelSerializer):
 	talla = serializers.SerializerMethodField('get_talla')
 	precio = serializers.SerializerMethodField('get_precio')
 	subtotal = serializers.SerializerMethodField('get_subtotal')
+	oferta = serializers.SerializerMethodField('get_oferta')
 	class Meta:
 		model = LineaCarro
-		fields = ('id','carro','producto','variacion','cantidad','thum','nombre','talla','precio','subtotal')
+		fields = ('id','carro','producto','variacion','cantidad','thum','nombre','talla','precio','subtotal','oferta')
 
 	def get_thum(self,obj):
-		thum = obj.producto.get_thum
+		thum = obj.producto.get_thum()
 		return thum
 
 	def get_nombre(self,obj):
@@ -47,7 +50,12 @@ class LineaSerializer(serializers.ModelSerializer):
 		return obj.variacion.talla
 
 	def get_precio(self,obj):
-		return obj.variacion.get_precio_venta
+		precio = obj.variacion.get_precio_venta()
+		return "%0.2f" %(precio)
 
 	def get_subtotal(self,obj):
-		return obj.get_subtotal
+		subtotal = obj.get_subtotal()
+		return "%0.2f" %(subtotal)
+
+	def get_oferta(self,obj):
+		return obj.variacion.oferta
