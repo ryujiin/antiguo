@@ -32,7 +32,7 @@ class Producto(models.Model):
 		super(Producto, self).save(*args, **kwargs)
 
 	def get_thum(self):
-		img = get_thumbnail(self.imagen, '160x100', quality=99)
+		img = get_thumbnail(self.imagen, '450x350', quality=99)
 		url ="%s%s" %(settings.S3_URL,img.name)
 		return url
 

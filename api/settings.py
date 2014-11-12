@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'cliente',
     'catalogo',
     'utils',
+    'transporte',
     'ubigeo',
 )
 
@@ -114,7 +115,8 @@ TEMPLATE_DIRS = (
 CURRENCY_DEFAULT = 'S/.'
 
 #thums
-THUMBNAIL_FORMAT = 'PNG'
+THUMBNAIL_QUALITY = '80'
+THUMBNAIL_FORMAT = 'JPEG'
 
 DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = 'AKIAIOQVODZOP7AWZMGA'
