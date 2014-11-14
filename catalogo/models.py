@@ -142,3 +142,11 @@ class ProductoImagen(models.Model):
 	foto = models.ImageField(upload_to=url_imagen_pr)
 	creado = models.DateTimeField(auto_now_add=True)
 	actualizado = models.DateTimeField(auto_now=True)
+
+	def get_thum_medium(self):
+		img = get_thumbnail(self.foto, '740x350', quality=80)
+		return img
+
+	def get_thum(self):
+		img = get_thumbnail(self.foto, '150x50', quality=80)
+		return img

@@ -45,12 +45,24 @@ class ProductoVariacionSerializer(serializers.ModelSerializer):
 
 class ImgProductoSerializer(serializers.ModelSerializer):
 	imagen = serializers.SerializerMethodField('get_imagen')
+	imagen_medium = serializers.SerializerMethodField('get_imagen_medium')
+	imagen_thum = serializers.SerializerMethodField('get_imagen_thum')
 	class Meta:
 		model = ProductoImagen
-		fields =('imagen',)
+		fields =('imagen','imagen_medium','imagen_thum')
 		
 	def get_imagen(self,obj):
 		url = "%s%s" %(settings.S3_URL,obj.foto.name)
+		return url
+	
+	def get_imagen_medium(self,obj):
+		url = obj.get_thum_medium()
+		url = "%s%s" %(settings.S3_URL,url.name)
+		return url
+
+	def get_imagen_thum(self,obj):
+		url = obj.get_thum()
+		url = "%s%s" %(settings.S3_URL,url.name)
 		return url
 
 class ParienteSerialiezer(serializers.ModelSerializer):
