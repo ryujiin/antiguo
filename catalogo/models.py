@@ -140,6 +140,7 @@ def url_imagen_pr(self,filename):
 class ProductoImagen(models.Model):
 	producto = models.ForeignKey(Producto,related_name="imagenes_producto")
 	foto = models.ImageField(upload_to=url_imagen_pr)
+	orden = models.PositiveIntegerField(default=0)
 	creado = models.DateTimeField(auto_now_add=True)
 	actualizado = models.DateTimeField(auto_now=True)
 
