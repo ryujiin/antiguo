@@ -143,6 +143,8 @@ class ProductoImagen(models.Model):
 	orden = models.PositiveIntegerField(default=0)
 	creado = models.DateTimeField(auto_now_add=True)
 	actualizado = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ["orden"]
 
 	def get_thum_medium(self):
 		img = get_thumbnail(self.foto, '740x550', quality=80)
