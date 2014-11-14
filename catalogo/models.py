@@ -144,7 +144,7 @@ class ProductoImagen(models.Model):
 	actualizado = models.DateTimeField(auto_now=True)
 
 	def get_thum_medium(self):
-		img = get_thumbnail(self.foto, '740x350', quality=80)
+		img = get_thumbnail(self.foto, '740x550', quality=80)
 		return img
 
 	def get_thum(self):
