@@ -50,6 +50,7 @@ class ImgProductoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ProductoImagen
 		fields =('imagen','imagen_medium','imagen_thum','orden')
+		order_by = 'orden'
 		
 	def get_imagen(self,obj):
 		url = "%s%s" %(settings.S3_URL,obj.foto.name)
