@@ -22,7 +22,6 @@ class CarritoViewsApi(APIView):
 				raise Http404
 		else:
 			coockie_carro = self.request.GET.get('session')
-			
 			try:
 				return Carro.objects.get(sesion_carro=coockie_carro,estado="Abierto")
 			except Carro.DoesNotExist:
