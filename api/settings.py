@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'storages',
     'gunicorn',
     'sorl.thumbnail',
+    'social.apps.django_app.default',
     #mis apps
     'carro',
     'cliente',
@@ -111,6 +112,12 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (
     location('templates'),
 )
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
 
 CURRENCY_DEFAULT = 'S/.'
 
@@ -133,6 +140,16 @@ CORS_ORIGIN_ALLOW_ALL = True
 #CORS_ORIGIN_WHITELIST = (
 #    'lovizdelcarpio.com',
 #)
+SOCIAL_AUTH_FACEBOOK_KEY = '608936475881862'
+SOCIAL_AUTH_FACEBOOK_SECRET = '94224beabaf395d27755fb68d432d21a'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.facebook.FacebookAppOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

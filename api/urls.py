@@ -28,6 +28,8 @@ urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url('', include('social.apps.django_app.urls',namespace="social")),
+
 
     url(r'^admin/', include(admin.site.urls)),
 )
