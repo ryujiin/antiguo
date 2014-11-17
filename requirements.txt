@@ -10,7 +10,14 @@ django-storages==1.1.8
 djangorestframework==2.4.3
 djangorestframework-jwt==1.0.2
 gunicorn==19.1.1
+oauthlib==0.7.2
 psycopg2==2.5.4
+pycountry==1.8
+python-openid==2.2.5
+python-social-auth==0.2.1
+requests==2.4.3
+requests-oauthlib==0.4.2
+six==1.8.0
 sorl-thumbnail==11.12.1b
 static3==0.5.1
 wsgiref==0.1.2
