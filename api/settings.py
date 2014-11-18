@@ -160,7 +160,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework_jwt.authentication.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
 }
 SOCIAL_AUTH_PIPELINE = (
