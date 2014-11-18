@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
     url(r'^api-token/login/(?P<backend>[^/]+)/$',ObtainAuthToken.as_view()),
-    url(r'^register/(?P<backend>[^/]+)/', cliente.views.register_by_access_token),
+    url(r'^register/(?P<backend>[^/]+)/', 'cliente.views.register_by_access_token'),
     url('', include('social.apps.django_app.urls',namespace="social")),
 
 
