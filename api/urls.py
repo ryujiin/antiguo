@@ -5,7 +5,7 @@ from django.conf import settings
 
 from rest_framework import routers
 from catalogo.views import CategoriaViewsets,ProductoListaViewsets,CatalogoViewsets
-from cliente.views import UsuarioViewSet
+from cliente.views import UsuarioViewSet,ObtainAuthToken
 from carro.views import LineasViewsets
 from ubigeo.views import RegionViewset
 
@@ -28,6 +28,8 @@ urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url(r'^api-token/login/(?P<backend>[^/]+)/$',ObtainAuthToken.as_view()),
+    url(r'^register/(?P<backend>[^/]+)/', cliente.views.register_by_access_token),
     url('', include('social.apps.django_app.urls',namespace="social")),
 
 
