@@ -146,6 +146,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'fb0f2e7c44807a331fb010229ae70e92'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 AUTHENTICATION_BACKENDS = (
+    'cliente.backends.EmailOrUsernameModelBackend',
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.facebook.FacebookAppOAuth2',
     'django.contrib.auth.backends.ModelBackend',
