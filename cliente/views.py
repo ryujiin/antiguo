@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from models import *
-from serializers import PerfilUSerSerializer,UsuarioSerializer
+from serializers import PerfilUSerSerializer,UsuarioSerializer,UserSerializer
 from django.contrib.auth.models import User, Group
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
@@ -20,7 +20,7 @@ from rest_framework.authtoken.models import Token
 
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
-
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -37,10 +37,16 @@ class PerfilUserViewSet(APIView):
 		serializer = UsuarioSerializer(perfil)
 		return Response(serializer.data)
 
-class UsuarioViewSet(viewsets.ReadOnlyModelViewSet):
-	permission_classes = (IsAdminUser,)
+from rest_framework.permissions import AllowAny
+from .permissions import IsStaffOrTargetUser
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+	serializer_class = UserSerializer
 	model = User
-	serializer_class = UsuarioSerializer
+
+	def get_permissions(self):
+		return (AllowAny() if self.request.method == 'POST'
+			else IsStaffOrTargetUser()),
 
 
 @csrf_exempt
