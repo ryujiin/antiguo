@@ -32,9 +32,8 @@ class Producto(models.Model):
 		super(Producto, self).save(*args, **kwargs)
 
 	def get_thum(self):
-		img = get_thumbnail(self.imagen, '450x350', quality=99)
-		url ="%s%s" %(settings.S3_URL,img.name)
-		return url
+		img = get_thumbnail(self.imagen, '450x350', quality=80)
+		return img
 
 	def get_en_oferta(self):
 		variaciones = self.get_variaciones()

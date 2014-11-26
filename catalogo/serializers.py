@@ -50,19 +50,16 @@ class ImgProductoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ProductoImagen
 		fields =('imagen','imagen_medium','imagen_thum','orden')
-		
-	def get_imagen(self,obj):
-		url = "%s%s" %(settings.S3_URL,obj.foto.name)
-		return url
 	
+	def get_imagen(self,obj):
+		return obj.foto.url
+
 	def get_imagen_medium(self,obj):
-		url = obj.get_thum_medium()
-		url = "%s%s" %(settings.S3_URL,url.name)
+		url = obj.get_thum_medium().url
 		return url
 
 	def get_imagen_thum(self,obj):
-		url = obj.get_thum()
-		url = "%s%s" %(settings.S3_URL,url.name)
+		url = obj.get_thum().url
 		return url
 
 class ParienteSerialiezer(serializers.ModelSerializer):
@@ -76,14 +73,13 @@ class ParienteSerialiezer(serializers.ModelSerializer):
 		return img
 
 class ProductoSingleSereializer(serializers.ModelSerializer):
-	thum = serializers.SerializerMethodField('get_img_thum')
 	categoria= serializers.CharField(read_only=True)
 	estilo= serializers.CharField(read_only=True)
 	color= serializers.CharField(read_only=True)
-	imagen_p = serializers.SerializerMethodField('get_imagen_aws')
-	imagenes_producto = ImgProductoSerializer(many=True)
 	variaciones = ProductoVariacionSerializer(many=True)
-
+	imagenes_producto = ImgProductoSerializer(many=True)
+	thum = serializers.SerializerMethodField('get_thum')
+	variaciones = ProductoVariacionSerializer(many=True)
 	parientes = ParienteSerialiezer(many=True)
 
 	en_oferta = serializers.SerializerMethodField('get_oferta')
@@ -92,17 +88,13 @@ class ProductoSingleSereializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Producto
-		fields =('id','nombre','full_name','marca','categoria',
-			     'thum','estilo','color','slug','activo','imagen_p',
-			     'descripcion','imagenes_producto','variaciones','parientes','en_oferta','precio','precio_venta')
-	
-	def get_imagen_aws(self,obj):
-		url = "%s%s" %(settings.S3_URL,obj.imagen.name)
-		return url
+		fields = ('id','nombre','full_name','marca','categoria','estilo','color','slug','activo','descripcion','thum',
+				'en_oferta','precio','precio_venta',
+				'imagenes_producto','variaciones','parientes')
 
-	def get_img_thum(self,obj):
-		img = obj.get_thum
-		return img
+	def get_thum(self,obj):
+		thum = obj.get_thum().url
+		return thum
 
 	def get_oferta(self,obj):
 		return obj.get_en_oferta
@@ -116,3 +108,4 @@ class ProductoSingleSereializer(serializers.ModelSerializer):
 		precio= obj.get_precio_oferta_lista()
 		precio ="%0.2f" %(precio)
 		return precio
+		

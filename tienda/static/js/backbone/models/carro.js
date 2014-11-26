@@ -1,5 +1,5 @@
 Loviz.Models.Carro = Backbone.Model.extend({
-	urlRoot : 'http://lovizdc.herokuapp.com/api/carro/',
+	urlRoot : '/api/carro/',
 	name : 'Carro',
     url : function() {
         var base = this.urlRoot;

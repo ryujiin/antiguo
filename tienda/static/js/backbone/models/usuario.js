@@ -1,5 +1,5 @@
 Loviz.Models.Usuario = Backbone.Model.extend({
-	url:'http://lovizdc.herokuapp.com/api/cliente/perfil/',
+	url:'/api/cliente/perfil/',
 	name:'perfil',
 	initialize:function () {
 		this.buscar_usuario();

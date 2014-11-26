@@ -1,5 +1,5 @@
 Loviz.Models.Linea = Backbone.Model.extend({
-	urlRoot : 'http://lovizdc.herokuapp.com/api/lineas/',
+	urlRoot : '/api/lineas/',
 	name : 'Linea',
 	url : function() {
 		var base = this.urlRoot;
