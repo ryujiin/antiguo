@@ -8,6 +8,7 @@ from catalogo.views import CategoriaViewsets,ProductoListaViewsets,CatalogoViews
 from cliente.views import UsuarioViewSet,ObtainAuthToken
 from carro.views import LineasViewsets
 from ubigeo.views import RegionViewset
+from tienda.views import HomeView
 
 router = routers.DefaultRouter()
 
@@ -20,7 +21,6 @@ router.register(r'ubigeo',RegionViewset,'ubigeo')
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'api.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^api/cliente/', include('cliente.urls')),
     url(r'^api/carro/', include('carro.urls')),
@@ -34,6 +34,8 @@ urlpatterns = patterns('',
 
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^$',HomeView.as_view() , name='home'),    
 )
 if settings.DEBUG:
     urlpatterns = patterns('',

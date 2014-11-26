@@ -1,0 +1,49 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{%block titulo_pag%}{{titulo_web}} - {{titulo_tagline}} {%endblock%}
+	</title>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="created" content="{% now "jS M Y h:i" %}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block favicon %}
+    <link rel="shortcut icon" href="/media/tienda/logodelcarpio2_1.ico" />
+    {% endblock %}
+    {% block stilos%}
+    	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200' rel='stylesheet' type='text/css'>
+	    <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
+	    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    {% endblock%}
+    {% block extrastyles %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+
+</head>
+<body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
+	{% csrf_token %}
+	{% block layout %}
+	{% endblock %}
+	{% block tracking %}
+	{% endblock %}
+	{%block scripts%}
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//underscorejs.org/underscore-min.js"></script>
+	<script src="//paularmstrong.github.io/swig/js/swig.min.js"></script>
+	<script src="//backbonejs.org/backbone.js"></script>
+
+	<script src="{% static "js/vendor/jquery.cookie.js/" %}"></script>
+	<script src="{% static "js/vendor/jquery.storeageapi.js/" %}"></script>
+	<script src="{% static "js/vendor/jquery.zoom.js/" %}"></script>
+
+	<script src="{% static "js/init.js/" %}"></script>
+	
+	<script src="{% static "js/main.js/" %}"></script>
+	{%endblock%}
+	{% block extrascripts %}{% endblock %}
+</body>
+</html>

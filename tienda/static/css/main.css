@@ -1,0 +1,170 @@
+aside.lateral_menu{width:280px;margin:0 10px;}
+aside.lateral_menu .bloque{border:1px solid #f4f4f4;border-left:none;border-right:none;}
+aside.lateral_menu .bloque h3{margin:10px 0;font-family:'Pathway Gothic One',sans-serif;font-weight:400;text-transform:uppercase;text-decoration:underline}
+aside.lateral_menu .bloque ul{margin:5px 0;list-style:none;padding:0;}
+aside.lateral_menu .bloque ul li{width:130px;display:inline-block;}
+aside.lateral_menu .bloque ul li a{font-family:'Pathway Gothic One',sans-serif;display:inline-block;width:100%}
+body{font-size:16px;font-family:'Open Sans',sans-serif;}
+body a{color:#111;text-decoration:none;}
+body a:hover{text-decoration:underline}
+body .contenedor{max-width:1200px;margin:0 auto}
+body .col2{width:49%;margin:0 10px}
+body .col3{width:32%;margin:0 10px}
+body .col4{width:24%;margin:0 10px}
+body img{width:100%}
+body .subtitulo{font-family:'Playfair Display',serif;text-transform:uppercase;text-align:center;font-weight:normal}
+body .fondo_negro{background:#333;color:#fff;}
+body .fondo_negro a{color:#fff}
+body .enlinea{display:inline-block}
+body p{color:#999;font-size:.8em}
+body .fuente_imprenta{font-family:'Pathway Gothic One',sans-serif;letter-spacing:1px}
+body .page_loading{background:url("https://s3-us-west-2.amazonaws.com/lovizfront/img/ajax-loader.gif");background-repeat:no-repeat;background-position:center}
+body .left{float:left}
+body .menu{padding:0;margin:0;}
+body .menu li{list-style:none;display:inline-block}
+body .text_centro{text-align:center}
+body .right{float:right}
+body .text_fallo{color:#c41c1a}
+body input.fallo{border:1px solid #c41c1a}
+body input.bueno{border:1px solid #729331;color:#729331 !important}
+body .text_good{color:#729331}
+body select{text-transform:capitalize;margin:0 0 15px 0;border:1px solid #ccc;border-radius:5px;background:#fff;padding:5px 8px;outline:none;}
+body select:focus{box-shadow:0 0 10px #87e0fd}
+body .overflow{overflow:hidden}
+body .visible{display:block !important}
+#banner_top_envio{padding:5px 0}
+#banner_header{background:url("http://demandware.edgesuite.net/aaff_prd/on/demandware.static/Sites-UGG-US-Site/Sites/default/v1415906840543/ugg/home/F14-NOV-home-oprah-bg.jpg") no-repeat fixed;min-height:390px;width:100%;background-position:center top;position:relative;background-size:cover;background-attachment:fixed;position:relative;}
+#banner_header.no_home{min-height:170px}
+#banner_header .capa_parallax{position:absolute;width:100%;top:100%;text-align:center;}
+#banner_header .capa_parallax h3{font-family:'Great Vibes',cursive;font-size:25px}
+#barra_top{text-transform:uppercase;background:#fff;border-bottom:1px solid #f4f4f4;font-size:.9em;}
+#barra_top li{padding:7px 10px;border-right:1px solid #f4f4f4}
+#carro{overflow:hidden;margin-bottom:40px;}
+#carro h1{font-family:'Pathway Gothic One',sans-serif;font-weight:normal;text-align:center;font-size:45px;margin:0}
+#carro h3{font-family:Georgia;font-style:italic;}
+#carro h3 span{color:#f7727a}
+#carro .botones span{font-size:.8em;}
+#carro .botones span a{color:#f7727a}
+#carro table{width:100%;font-family:'Pathway Gothic One',sans-serif;}
+#carro table thead{border-bottom:3px solid #333}
+#carro table .lineas{text-align:center;}
+#carro table .lineas .img{width:100px}
+#carro table .lineas .name{text-align:left}
+#carro table .lineas td{padding:20px 0}
+#carro table tr{border-bottom:1px solid #333}
+#contenido{position:relative}
+#catalogo{padding:20px 0;}
+#catalogo .productos .producto{border:1px solid #fff;margin:0 0 30px 0;}
+#catalogo .productos .producto:hover{border:1px solid #f4f4f4;}
+#catalogo .productos .producto:hover .icono{display:block}
+#catalogo .productos .producto .icono{display:none;top:10px;font-size:20px;right:10px;position:absolute}
+footer{color:#fff;background:#111;font-family:'Pathway Gothic One',sans-serif;padding:30px 0 0 0;}
+footer a{color:#fff}
+footer #bloques_footer{overflow:hidden;margin:0 0 10px;}
+footer #bloques_footer >div{width:200px;float:left;margin-right:50px;}
+footer #bloques_footer >div h3{border-bottom:1px solid #333;margin:0 0 5px;padding:0 0 10px}
+footer #bloques_footer >div ul{margin:0;padding:0;}
+footer #bloques_footer >div ul li{list-style:none;margin:5px 0}
+footer .redes_sociales{padding:10px 0;text-align:center;}
+footer .redes_sociales a{margin:0 10px;font-size:25px}
+#footer_bottom{border-top:1px solid #333;padding:10px 0}
+#linea_addcart{position:fixed;z-index:2;right:20px;padding:5px 40px;text-align:center;background:#fff;box-shadow:0 10px 15px rgba(0,0,0,0.5);display:none;}
+#linea_addcart img{width:100px}
+#linea_addcart h4{font-family:'Pathway Gothic One',sans-serif;font-size:18px;text-transform:uppercase;margin:0;font-weight:normal}
+#linea_addcart p{margin:0}
+#menu_principal{border-bottom:1px solid #f4f4f4;height:74px;background:#fff;position:relative;}
+#menu_principal.fijo{position:fixed;width:100%;z-index:1;top:0;box-shadow:0 0 8px 0 rgba(0,0,0,0.4)}
+#menu_principal .carrito-icon a{padding:30px 20px 26px;display:inline-block}
+#menu_principal .logo{padding:8px 3px;margin-right:20px;}
+#menu_principal .logo .img_logo{width:50px;overflow:hidden;}
+#menu_principal .logo .img_logo img{width:120px}
+#menu_principal .logo h1{margin:0;font-family:'Great Vibes',cursive;font-size:2.2em;font-weight:normal;padding:11px 5px 0}
+#menu_principal ul{text-transform:uppercase;margin-left:20px;}
+#menu_principal ul li a{padding:30px 20px 26px;display:inline-block}
+#medios_estamos{overflow:hidden;}
+#medios_estamos h2{font-size:2em}
+#medios_estamos .hastag{font-family:'Pathway Gothic One',sans-serif;color:#fff;background:#111;display:block;margin:0 auto;width:100px;text-align:center;padding:5px 0}
+#medios_estamos .bloque{width:300px;float:left;}
+#medios_estamos .bloque h4{font-family:'Pathway Gothic One',sans-serif;text-transform:uppercase;margin:5px 0}
+#medios_estamos .bloque p{margin:0 10px 0 0}
+#mini_carrito .number{background:#111;color:#fff;padding:1px 6px;border-radius:12px;margin-left:2px}
+.page{min-height:500px;}
+.page h1.titulo{text-align:center;font-family:'Pathway Gothic One',sans-serif}
+.producto{width:294px;text-transform:uppercase;text-align:center;display:inline-block;position:relative;}
+.producto:hover .estrellas{opacity:1}
+.producto figure{padding:15px}
+.producto .nombre_producto{font-size:1.1em;font-family:'Pathway Gothic One',sans-serif;}
+.producto .nombre_producto .nombre{font-weight:bold}
+.producto .precios .old_precio{font-size:.7em;text-decoration:line-through}
+.producto .precios .precio{font-weight:bold;}
+.producto .precios .precio.en_oferta{color:#f7727a}
+.producto .estrellas{opacity:0}
+#producto_single{overflow:hidden;margin:0;}
+#producto_single .conte_galerias{width:60%;float:left;overflow:hidden;}
+#producto_single .conte_galerias .imagenes_grandes{width:620px;float:right;margin-right:20px}
+#producto_single .conte_galerias .thum_gale{width:70px;float:left}
+#producto_single .conte_datos{width:38%;float:left}
+#producto_single .color_selection{border-top:1px solid #f4f4f4;padding:10px 0;}
+#producto_single .color_selection .color{font-style:italic}
+#producto_single .color_selection .colores a{display:inline-block;width:90px}
+#producto_single .descripcion{border-top:1px solid #f4f4f4;padding:10px 0;}
+#producto_single .descripcion p{margin:0;font-size:13px;font-style:italic}
+#producto_single .formulario_producto{padding:10px;background:#f1f1f1;text-align:center;}
+#producto_single .formulario_producto >div{margin:10px}
+#producto_single .formulario_producto input,#producto_single .formulario_producto select,#producto_single .formulario_producto button{width:200px;font-size:14px;font-family:'Pathway Gothic One',sans-serif;letter-spacing:1px}
+#producto_single .formulario_producto .no_seleccionado{box-shadow:0 0 8px #f00}
+#producto_single .formulario_producto .addcart{background:#729331;color:#fff;font-size:18px;border-radius:8px;padding:10px 0;font-weight:bold;border-bottom:3px solid #557423;border-top:1px solid #557423;border-right:1px solid #557423;border-left:1px solid #557423;outline:none}
+#producto_single h1{font-size:26px;font-family:'Pathway Gothic One',sans-serif;text-transform:uppercase;font-weight:normal;margin:5px 0;}
+#producto_single h1 .marca{font-weight:normal}
+#producto_single .genero{text-transform:uppercase;font-size:14px;font-weight:bold;font-family:'Pathway Gothic One',sans-serif}
+#producto_single label{font-weight:normal;text-transform:uppercase;font-size:16px;font-family:'Pathway Gothic One',sans-serif}
+#producto_single .precios_single{font-size:30px;}
+#producto_single .precios_single .variacion{display:none}
+#producto_single .precios_single .old_precio{font-size:13px;text-decoration:line-through}
+#producto_single .precios_single >div{font-weight:bold;display:inline-block}
+#producto_single .reviews{padding:10px 0;border-top:1px solid #f4f4f4;}
+#producto_single .reviews >div{display:inline-block}
+#producto_single .reviews .estrellas{margin-right:10px}
+#producto_single .detalles_producto{width:75%;float:left;font-size:12px;}
+#producto_single .detalles_producto .product-description{margin:0 20px}
+#producto_single .detalles_producto h2{font-size:20px;text-transform:uppercase;font-family:'Pathway Gothic One',sans-serif}
+#producto_single .productos_relacionas{width:20%;float:left;padding:20px;text-align:center;border-left:1px solid #f4f4f4;}
+#producto_single .productos_relacionas a{color:#333}
+#producto_single .productos_relacionas h3{font:italic 14px Georgia,"Times New Roman",serif;color:#777}
+#producto_single .productos_relacionas .producto{width:100%;}
+#producto_single .productos_relacionas .producto .icono{display:none}
+.slider{overflow:hidden;margin-bottom:40px;}
+.slider .titulo_slider{width:300px;text-align:center;}
+.slider .titulo_slider >div{padding:30px;position:relative;}
+.slider .titulo_slider >div .esquina{width:10px;height:10px;border:1px solid #111;position:absolute;}
+.slider .titulo_slider >div .esquina.esq_top{top:0;border-bottom:none}
+.slider .titulo_slider >div .esquina.esq_botton{bottom:0;border-top:none}
+.slider .titulo_slider >div .esquina.esq_l{left:0;border-right:none}
+.slider .titulo_slider >div .esquina.esq_r{right:0;border-left:none}
+.slider .titulo_slider h2{font-weight:normal;font-size:20px;border-bottom:1px solid #ccc;padding:0 0 10px;margin:0;display:inline-block}
+.slider .titulo_slider p{text-align:left;font-size:.8em}
+.slider .cuerpo_slider{width:900px}
+#suscripcion{background:url("https://s3-us-west-2.amazonaws.com/lovizfront/img/bg_suscriptio.jpg") no-repeat fixed;background-position:center center;min-height:330px;position:relative;text-align:center;background-size:cover;background-attachment:fixed;padding:20px;}
+#suscripcion.no_home{background:#fafafa;min-height:160px;}
+#suscripcion.no_home .capa_parallax{border:none;}
+#suscripcion.no_home .capa_parallax .formu_suscription{margin:20px 0;}
+#suscripcion.no_home .capa_parallax .formu_suscription h4{font-size:1.2em}
+#suscripcion .capa_parallax{border:2px solid #fff;}
+#suscripcion .capa_parallax .formu_suscription{margin:100px 0;font-size:30px;}
+#suscripcion .capa_parallax .formu_suscription h4{color:#000;font-size:2em;font-weight:normal;font-family:'Great Vibes',cursive;margin:0}
+#suscripcion .capa_parallax .formu_suscription input{border:none;padding:10px;font:italic 14px Georgia,"Times New Roman",serif;width:400px;font-style:italic;outline:none;float:left}
+#suscripcion .capa_parallax .formu_suscription .input_invisible{width:500px;margin:0 auto;background:#fff;overflow:hidden;border:2px solid #111}
+#suscripcion .capa_parallax .formu_suscription .icono{float:right;line-height:1px;background:#111;color:#fff;padding:3px 10px}
+#testimonios{overflow:hidden;background:#f9f9f9;padding:3em 0;margin:3em 0 0 0;}
+#testimonios h2{text-transform:initial;font-family:'Great Vibes',cursive;margin:10px 0;font-size:3em}
+#testimonios p{width:700px;margin:20px auto}
+#testimonios .comentario{width:580px;float:left;margin:10px;}
+#testimonios .comentario .imageuser{width:100px;display:inline-block;line-height:0;border-radius:50px;}
+#testimonios .comentario .imageuser img{border-radius:50px}
+#testimonios .comentario .cuerpo_coment{width:470px;display:inline-block;margin-right:5px;}
+#testimonios .comentario .cuerpo_coment h2{font-family:'Pathway Gothic One',sans-serif;font-weight:normal;font-size:1em;text-transform:uppercase;margin:2px}
+#testimonios .comentario .cuerpo_coment p{width:100%;margin:5px 5px 5px 0}
+#testimonios .comentario .cuerpo_coment .username{font-size:.9em}
+#testimonios .comentario .cuerpo_coment .estrellas{color:#facc2e}
+#pagar,#ingresar{display:none}
+#usuario #formu_crear_cuenta{display:none}
