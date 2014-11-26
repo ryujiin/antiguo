@@ -127,7 +127,7 @@ CURRENCY_DEFAULT = 'S/.'
 THUMBNAIL_QUALITY = '80'
 THUMBNAIL_FORMAT = 'JPEG'
 
-"""
+
 DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = 'AKIAIOQVODZOP7AWZMGA'
 AWS_SECRET_ACCESS_KEY = '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'
@@ -137,7 +137,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 THUMBNAIL_STORAGE ='storages.backends.s3boto.S3BotoStorage'
 
 S3_URL = 'https://%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
-"""
 
 CORS_ORIGIN_ALLOW_ALL = True
 
