@@ -10,6 +10,7 @@ eggs
 log
 parts
 media/uploads
+public/media/*
 tmp
 .DS_Store
 
