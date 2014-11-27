@@ -1,6 +1,6 @@
 Loviz.Views.Tienda = Backbone.View.extend({
 	events: {
-		'click a' : 'linknormal',
+		'click a.interno' : 'linknormal',
 		'click .logo' : 'navega_home',
 		'blur .requerido':'verificar_input_requerido',
 		'blur input[type=password]':'verificar_pass',

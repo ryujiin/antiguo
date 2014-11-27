@@ -7,6 +7,13 @@ $(document).ready(function(){
     
     window.views.tienda = new Loviz.Views.Tienda( $('body') );
     galleta = window.views.tienda.obt_galleta();
+
+    //usuario
+    window.models.usuario = new Loviz.Models.Usuario();
+    window.views.usuario = new Loviz.Views.Usuario();
+    window.views.mini_user = new Loviz.Views.Mini_user({
+        model:window.models.usuario
+    });
     
     //Crear Carro
     window.collections.lineas = new Loviz.Collections.Lineas();
@@ -25,13 +32,6 @@ $(document).ready(function(){
     window.views.suscribcion = new Loviz.Views.Suscribcion();
     window.views.testimonios = new Loviz.Views.Testimonios();
     window.views.redes = new Loviz.Views.Redes_sociales();
-
-    //usuario
-    window.models.usuario = new Loviz.Models.Usuario();
-    window.views.usuario = new Loviz.Views.Usuario();
-    window.views.mini_user = new Loviz.Views.Mini_user({
-        model:window.models.usuario
-    });
 
     window.models.producto_single = new Loviz.Models.Producto()
     window.views.producto_single = new Loviz.Views.ProductoSingle({model:window.models.producto_single,}); 

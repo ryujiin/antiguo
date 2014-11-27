@@ -26,16 +26,17 @@ urlpatterns = patterns('',
     url(r'^api/carro/', include('carro.urls')),
 
     url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
-    url(r'^api-token/login/(?P<backend>[^/]+)/$',ObtainAuthToken.as_view()),
-    url(r'^register/(?P<backend>[^/]+)/', 'cliente.views.register_by_access_token'),
+    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    #url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    #url(r'^api-token/login/(?P<backend>[^/]+)/$',ObtainAuthToken.as_view()),
+    #url(r'^register/(?P<backend>[^/]+)/', 'cliente.views.register_by_access_token'),
     url('', include('social.apps.django_app.urls',namespace="social")),
 
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$',HomeView.as_view() , name='home'),    
+    url(r'^', include('tienda.urls')),
+
 )
 if settings.DEBUG:
     urlpatterns = patterns('',

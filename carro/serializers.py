@@ -40,7 +40,7 @@ class LineaSerializer(serializers.ModelSerializer):
 		fields = ('id','carro','producto','variacion','cantidad','thum','nombre','talla','precio','subtotal','oferta')
 
 	def get_thum(self,obj):
-		thum = obj.producto.get_thum()
+		thum = obj.producto.get_thum().url
 		return thum
 
 	def get_nombre(self,obj):

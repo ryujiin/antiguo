@@ -49,11 +49,22 @@ Loviz.Views.ProductoSingle = Backbone.View.extend({
 		var varia = this.$('.formulario_producto .talla').val();
 		if (varia !=='') {
 			var carro = window.models.carro.toJSON().id;
-			linea.set({carro:carro,producto:produ,variacion:varia,cantidad:1});
-			linea.save().done(function () {
-				var miniline = new Loviz.Views.Linea_addcart({model:linea})
-				window.models.carro.fetch();
-			})
+			if (carro ===undefined) {
+				window.models.carro.save().done(function (data) {
+					$.sessionStorage.set('carro_local',data.id);
+					linea.set({carro:data.id,producto:produ,variacion:varia,cantidad:1});
+					linea.save().done(function () {
+						var miniline = new Loviz.Views.Linea_addcart({model:linea})
+						window.models.carro.fetch();
+					})	
+				})
+			}else{
+				linea.set({carro:carro,producto:produ,variacion:varia,cantidad:1});
+				linea.save().done(function () {
+					var miniline = new Loviz.Views.Linea_addcart({model:linea})
+					window.models.carro.fetch();
+				})
+			}
 		}else{
 			this.elige_talla();
 		}
