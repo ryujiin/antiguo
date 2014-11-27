@@ -18,7 +18,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.contrib.auth.forms import UserCreationForm
 
@@ -48,35 +48,27 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 		return (AllowAny() if self.request.method == 'POST'
 			else IsStaffOrTargetUser()),
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+import json
 
-@csrf_exempt
-@psa('social:complete')
-def register_by_access_token(request, backend):
-	token = request.GET.get('access_token')
-	backend = request.backend
-	user = backend.do_auth(token)
-	return user
-
-
-class ObtainAuthToken(APIView):
-	throttle_classes = ()
-	permission_classes = ()
-	parser_classes = (parsers.FormParser, parsers.MultiPartParser, parsers.JSONParser,)
-	renderer_classes = (renderers.JSONRenderer,)
-	serializer_class = AuthTokenSerializer
-	model = Token
-	
-	# Accept backend as a parameter and 'auth' for a login / pass
-	def post(self, request, backend):
-		serializer = self.serializer_class(data=request.DATA)
-
-			# Here we call PSA to authenticate like we would if we used PSA on server side.
-		user = register_by_access_token(request, backend)
-		if user:
-			login(request, user)
-
-		# If user is active we get or create the REST token and send it back with user data
-		if user and user.is_active:
-			token, created = Token.objects.get_or_create(user=user)
-			return Response({'id': user.id , 'name': user.username, 'userRole': 'user','token': token.key})
-
+def ingresar(request):
+	if request.method=='POST':
+		formulario = AuthenticationForm(request.POST)
+		if formulario.is_valid:
+			username = request.POST['username']
+			clave = request.POST['password']
+			acceso = authenticate(username=username,password=clave)
+			if acceso is not None:
+				if acceso.is_active:
+					login(request,acceso)
+					return HttpResponse(json.dumps({'id':request.user.id,'nombre':request.user.username,'email':request.user.email}),
+							content_type='application/json;charset=utf8')
+				else:
+					return  HttpResponse(json.dumps({'id':0,'nombre':request.user.username,'email':request.user.email,'error_message':'El usurio esta inactivo'}),
+							content_type='application/json;charset=utf8')
+			else:
+				return HttpResponse(json.dumps({'id':0,'nombre':'anonimo','email':'','error_message':'Ha especificado un email o password incorrecto.'}),
+				content_type='application/json;charset=utf8')
+		else:
+			raise Http404

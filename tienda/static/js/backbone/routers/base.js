@@ -29,24 +29,17 @@ Loviz.Routers.Base = Backbone.Router.extend({
 		}
 	},
 	ingresar:function () {
-		var token = $.sessionStorage.get('token_login')
-		if (token) {
-			this.navigate('/perfil/', {trigger:true});	
-		}else{
-			if (window.views.ingresar===undefined) {
-				window.views.ingresar = new Loviz.Views.Ingresar();
-			};
-		}
+		if (window.views.ingresar===undefined) {
+			window.views.ingresar = new Loviz.Views.Ingresar();
+		};
+
 	},
 	perfil:function () {
-		var token = $.sessionStorage.get('token_login')		
-		if (token) {
+		if (window.views.perfil===undefined) {
 			window.views.perfil = new Loviz.Views.Perfil({
 				model:window.models.usuario,
-			})
-		}else{
-			this.navigate('/', {trigger:true});	
-		}
+			})	
+		};		
 	},
 	pagar:function () {
 		if (window.views.pagar===undefined) {

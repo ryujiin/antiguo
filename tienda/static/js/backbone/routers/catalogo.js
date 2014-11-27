@@ -12,7 +12,6 @@ Loviz.Routers.Catalogo = Backbone.Router.extend({
 	crear_catalogo:function () {
 	},
 	producto_single:function (slug,id) {
-		debugger;
 		var modelo = new Loviz.Models.Producto({id:id});
 		modelo.fetch().done(function () {
 			if (window.views.producto_single) {

@@ -41,7 +41,7 @@ Loviz.Views.Crear_User = Backbone.View.extend({
 					//comenzar efecto
 					this.$el.fadeOut();
 					$('#usuario').addClass('page_loading');
-					$.post('https://lovizdc.herokuapp.com/api/usuario/',{username : email.val(), password :pass.val(),email:email.val()})
+					$.post('/api/usuario/',{username : email.val(), password :pass.val(),email:email.val()})
 					.done(function (data) {
 						window.views.ingresar.login_view.login(email.val(),pass.val());
 					})

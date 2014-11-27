@@ -5,7 +5,7 @@ from django.conf import settings
 
 from rest_framework import routers
 from catalogo.views import CategoriaViewsets,ProductoListaViewsets,CatalogoViewsets
-from cliente.views import UsuarioViewSet,ObtainAuthToken
+from cliente.views import UsuarioViewSet
 from carro.views import LineasViewsets
 from ubigeo.views import RegionViewset
 from tienda.views import HomeView
@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^api/cliente/', include('cliente.urls')),
     url(r'^api/carro/', include('carro.urls')),
+    url(r'^ajax/login/', 'cliente.views.ingresar', name='ingresar_ajax'),
 
     url(r'^api/', include(router.urls)),
     #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

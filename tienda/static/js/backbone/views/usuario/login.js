@@ -30,10 +30,8 @@ Loviz.Views.Login = Backbone.View.extend({
 	},
 	login:function (email,pass) {
 		var self = this;
-		$.post('https://lovizdc.herokuapp.com/api-token-auth/',{username : email, password :pass})
+		$.post('/ajax/login/',{username : email, password :pass})
 		.done(function (data) {
-			var storage = $.sessionStorage;
-      		storage.set({'token_login' : data.token});
       		self.datos_user();
       		window.routers.base.navigate('/perfil/', {trigger:true});
       		$("#usuario").removeClass('page_loading');
@@ -48,20 +46,6 @@ Loviz.Views.Login = Backbone.View.extend({
 		})
 	},
 	datos_user:function(){
-	    var token = $.sessionStorage.get('token_login');
 	    var self = this;
-	    var sessionStorage=$.sessionStorage;
-	    if (token) {
-	    	window.models.usuario.fetch({
-	    		headers:{'Authorization':'JWT '+token}
-	    	})
-	    	.done(function(data){
-	    		$.sessionStorage.set('usuario',data.id);
-      			self.modelo = new Loviz.Models.Carro();
-	    	})
-	    	.fail(function(){
-	    		console.log('salio mal el login')
-	    	})
-	    };
   	},
 });

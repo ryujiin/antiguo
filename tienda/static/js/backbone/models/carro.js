@@ -23,7 +23,9 @@ Loviz.Models.Carro = Backbone.Model.extend({
         var token = $.sessionStorage.get('token_login')
         var carro_local = $.sessionStorage.get('carro_local')
         var usuario = $.sessionStorage.get('usuario');
-
+        debugger;
+        
+/*
         if (token) {
             self.fetch({
             	headers:{'Authorization':'JWT '+token}
@@ -43,6 +45,7 @@ Loviz.Models.Carro = Backbone.Model.extend({
                 $.sessionStorage.set(carro_local,data.id);
             })
         }
+        */
     },
     saber_que_carro:function(){
         var usuario = $.sessionStorage.get('usuario');

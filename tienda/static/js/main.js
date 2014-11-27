@@ -16,6 +16,7 @@ $(document).ready(function(){
     });
     
     //Crear Carro
+    /*
     window.collections.lineas = new Loviz.Collections.Lineas();
     window.models.carro = new Loviz.Models.Carro();
     window.views.mini_carrito = new Loviz.Views.Mini_carrito({model:window.models.carro})
@@ -43,7 +44,7 @@ $(document).ready(function(){
         collection:window.collections.catalogo,
     });
 
-    
+    */
     Backbone.history.start({
         pushState:true,
     });
