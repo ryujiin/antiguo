@@ -34,8 +34,6 @@ Loviz.Views.Perfil = Backbone.View.extend({
 	},
 	salir:function () {
 		$.sessionStorage.removeAll();
-		var modelo = new Loviz.Models.Carro();
-		window.models.carro.set(modelo.toJSON());
-		window.views.tienda.navega_home();
+		$.removeCookie('carrito');
 	}
 });

@@ -48,6 +48,8 @@ Loviz.Views.Login = Backbone.View.extend({
 	datos_user:function () {
 		window.models.usuario.buscar_usuario();
 		var carro_nuevo = new Loviz.Models.Carro();
-		carro_nuevo.fucionar_carro();
-	}
+		carro_nuevo.fetch().done(function () {
+			carro_nuevo.fucionar_carro();
+		})
+	},
 });

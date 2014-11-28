@@ -8,7 +8,6 @@ Loviz.Models.Carro = Backbone.Model.extend({
     },
 	initialize : function () {
         this.buscar_carro();
-        this.listenTo(window.models.usuario, "change", this.buscar_carro, this);
 	},
     defaults:{
         "propietario": null, 
@@ -35,8 +34,22 @@ Loviz.Models.Carro = Backbone.Model.extend({
         }
     },
     fucionar_carro:function(){
+        var carro_local = window.models.carro
+        var carro_server = this;
+        //comprobamos si tenemos productos en el carro local
+        if (carro_local.lineas>0) {
+            if (carro_server.lineas>0) {
+            };
+        }else{
+            //si no hay productos en el carro local nos quedamos con el carro del server
+            window.models.carro.set(carro_server.toJSON());
+        }
+        /*
+        debugger;
     	if (window.models.carro !== this) {
+            debugger;
             if (this.toJSON().lineas !==0 ) {
+                debugger;
                 var self = this;
                 var nueva_collecion = new Loviz.Collections.Lineas();
                 nueva_collecion.fetch({
@@ -61,5 +74,6 @@ Loviz.Models.Carro = Backbone.Model.extend({
                 });
             }
     	};
+        */
     },
 });
