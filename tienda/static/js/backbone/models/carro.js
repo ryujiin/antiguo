@@ -7,7 +7,8 @@ Loviz.Models.Carro = Backbone.Model.extend({
         return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id+'/';
     },
 	initialize : function () {
-		this.crear_carromodel();
+        this.buscar_carro();
+        this.listenTo(window.models.usuario, "change", this.buscar_carro, this);
 	},
     defaults:{
         "propietario": null, 
@@ -18,38 +19,22 @@ Loviz.Models.Carro = Backbone.Model.extend({
         "subtotal": "0.00", 
         "envio": 0
     },
-	crear_carromodel:function () {
-		var self = this;
-        var token = $.sessionStorage.get('token_login')
-        var carro_local = $.sessionStorage.get('carro_local')
-        var usuario = $.sessionStorage.get('usuario');
-        debugger;
-        
-/*
-        if (token) {
-            self.fetch({
-            	headers:{'Authorization':'JWT '+token}
-            })
-            .fail(function () {
+	buscar_carro:function () {
+        var self = this;
+        var usuario = window.models.usuario.toJSON().id
+        if (usuario>0) {
+            this.fetch().fail(function () {
                 self.set('propietario',usuario);
-            })
-        }else if(carro_local){
-            self.set('id',carro_local);
-            self.fetch();
+            });
         }else{
-            self.fetch({
+            this.fetch({
                 data:$.param({session:galleta})
             }).fail(function () {
-                self.set('sesion_carro',galleta);              
-            }).done(function (data) {
-                $.sessionStorage.set(carro_local,data.id);
+                self.set('sesion_carro',galleta)
             })
         }
-        */
     },
-    saber_que_carro:function(){
-        var usuario = $.sessionStorage.get('usuario');
-        var token = $.sessionStorage.get('token_login')
+    fucionar_carro:function(){
     	if (window.models.carro !== this) {
             if (this.toJSON().lineas !==0 ) {
                 var self = this;
@@ -73,16 +58,8 @@ Loviz.Models.Carro = Backbone.Model.extend({
                 this.set('estado','Fusionada');
                 this.save().done(function () {
                     window.models.carro.save();
-                    
                 });
             }
     	};
     },
-    salvar_primera:function () {
-        if (this.id===undefined) {
-            this.save().done(function (data) {
-                $.sessionStorage.set('carro_local',data.id);
-            })
-        };
-    }
 });

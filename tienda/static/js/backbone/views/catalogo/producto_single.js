@@ -50,12 +50,16 @@ Loviz.Views.ProductoSingle = Backbone.View.extend({
 		if (varia !=='') {
 			var carro = window.models.carro.toJSON().id;
 			if (carro ===undefined) {
-				window.models.carro.save().done(function (data) {
-					$.sessionStorage.set('carro_local',data.id);
+				debugger;
+				window.models.carro.save()
+				.done(function (data) {
+					debugger
 					linea.set({carro:data.id,producto:produ,variacion:varia,cantidad:1});
 					linea.save().done(function () {
 						var miniline = new Loviz.Views.Linea_addcart({model:linea})
-						window.models.carro.fetch();
+						window.models.carro.fetch().done(function (data) {
+							debugger;
+						})
 					})	
 				})
 			}else{

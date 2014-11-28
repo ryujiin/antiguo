@@ -5,6 +5,11 @@ Loviz.Models.Usuario = Backbone.Model.extend({
 		this.buscar_usuario();
 	},
 	buscar_usuario:function () {
-		this.fetch();
+		this.fetch()
+		.done(function () {
+			$.sessionStorage.set('usuario',true)
+		}).fail(function () {
+			$.sessionStorage.set('usuario',false)
+		})
 	}
 });

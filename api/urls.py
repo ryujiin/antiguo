@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^api/cliente/', include('cliente.urls')),
     url(r'^api/carro/', include('carro.urls')),
     url(r'^ajax/login/', 'cliente.views.ingresar', name='ingresar_ajax'),
+    url(r'^ajax/salir/', 'cliente.views.salir', name='salir'),
 
     url(r'^api/', include(router.urls)),
     #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

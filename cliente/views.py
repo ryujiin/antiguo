@@ -12,7 +12,7 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.decorators import api_view, throttle_classes
 from social.apps.django_app.utils import psa
 
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -72,3 +72,8 @@ def ingresar(request):
 				content_type='application/json;charset=utf8')
 		else:
 			raise Http404
+
+@login_required(login_url='/ingresar/')
+def salir(request):
+	logout(request)
+	return HttpResponseRedirect('/')
