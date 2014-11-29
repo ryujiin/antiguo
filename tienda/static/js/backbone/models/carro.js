@@ -20,7 +20,7 @@ Loviz.Models.Carro = Backbone.Model.extend({
         "envio": 0
     },
 	buscar_carro:function () {
-        
+        debugger;
         var self = this;
         var carrito = $.localStorage.get('carro')
         var usuario = window.models.usuario.toJSON().id
@@ -28,43 +28,47 @@ Loviz.Models.Carro = Backbone.Model.extend({
             this.fetch()
             .fail(function () {
                 self.set('propietario',usuario);
+                if (carrito!=null) {
+                    self.carro_local(carrito);
+                };
             })
             .done(function () {
-                
                 if (carrito !=null) {
-                    
                     self.fucionar_carro(carrito);
                 };
             })
         }else{
-            
             this.fetch({
                 data:$.param({session:galleta})
             }).fail(function () {
+                debugger;
                 self.set('sesion_carro',galleta)
+                if (carrito!=null) {
+                    self.carro_local(carrito);
+                };
             }).done(function () {
                 if (carrito !=null) {
-                    
                     self.fucionar_carro(carrito);
                 };
             })
         }
     },
     fucionar_carro:function(carro_id){
+        debugger;
         var self = this;
         $.localStorage.remove('carro');
         var user = $.sessionStorage.get('usuario');
         //Fucionar carro Local con el servidor
         //verifico si el carro local fue salvado
-        
+        debugger;
         var nueva_collecion = new Loviz.Collections.Lineas();
         nueva_collecion.fetch({
             data:$.param({carro:carro_id})
         })
         .done(function () {
-            
+            debugger;
             nueva_collecion.forEach(function (linea) {
-                
+                debugger;
                 linea.set('carro',self.id);
                 linea.save();
             });
@@ -73,10 +77,42 @@ Loviz.Models.Carro = Backbone.Model.extend({
             var carro_fucion = new Loviz.Models.Carro({id:carro_id});
             
             carro_fucion.set({'estado':'Fusionada','propietario':user});
-            
+            debugger;
             carro_fucion.save().done(function () {
-                window.models.carro.fetch();
+                debugger;
+                window.models.carro.fetch().done(function () {
+                    debugger;
+                });
             });
         });
     },
+    carro_local:function (carrito) {
+        $.localStorage.remove('carro');
+        debugger;
+        var self = this;
+        carro_id=carrito
+        var user = $.sessionStorage.get('usuario');
+        this.save().done(function () {
+            debugger;
+            var nueva_collecion = new Loviz.Collections.Lineas();
+            nueva_collecion.fetch({
+                data:$.param({carro:carro_id})
+            }).done(function () {
+                debugger;
+                nueva_collecion.forEach(function (linea) {                
+                    linea.set('carro',self.id);
+                    linea.save();
+                });
+                debugger;
+                 var carro_fucion = new Loviz.Models.Carro({id:carro_id});
+            
+                carro_fucion.set({'estado':'Fusionada','propietario':user});
+                
+                carro_fucion.save().done(function () {
+                    window.models.carro.fetch();
+                    debugger;
+                });
+            })
+        })
+    }
 });
