@@ -32,9 +32,7 @@ Loviz.Views.Login = Backbone.View.extend({
 		var self = this;
 		$.post('/ajax/login/',{username : email, password :pass})
 		.done(function (data) {
-			self.datos_user();
-      		window.routers.base.navigate('/perfil/', {trigger:true});
-      		$("#usuario").removeClass('page_loading');
+			self.guardar_carro();
 		})
 		.fail(function () {
 			self.$el.fadeIn();
@@ -45,11 +43,10 @@ Loviz.Views.Login = Backbone.View.extend({
 			});
 		})
 	},
-	datos_user:function () {
-		window.models.usuario.buscar_usuario();
-		var carro_nuevo = new Loviz.Models.Carro();
-		carro_nuevo.fetch().done(function () {
-			carro_nuevo.fucionar_carro();
-		})
-	},
+	guardar_carro:function () {
+		if (window.models.carro.id!==undefined) {
+			$.localStorage.set('carro',window.models.carro.id);
+		};
+		location.href='/perfil/';
+	}
 });

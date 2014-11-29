@@ -60,13 +60,13 @@ class Carro(models.Model):
 		if self.propietario:
 			self.sesion_carro = 'carro de %s ya no hay cookie%s' %(self.propietario,self.id)
 		super(Carro, self).save(*args, **kwargs)		
-		carros = Carro.objects.filter(Q(propietario=self.propietario) | Q(sesion_carro=self.sesion_carro)).filter(estado=self.ABIERTO).order_by('-pk')
-
-		if carros:
-			for carro in carros:
-				if self.pk != carro.pk:
-					carro.estado = self.CONGELADA
-					carro.save()
+		if self.estado!='Fusionada':
+			carros = Carro.objects.filter(Q(propietario=self.propietario) | Q(sesion_carro=self.sesion_carro)).filter(estado=self.ABIERTO).order_by('-pk')
+			if carros:
+				for carro in carros:
+					if self.pk != carro.pk:
+						carro.estado = self.CONGELADA
+						carro.save()
 		
 
 class LineaCarro(models.Model):

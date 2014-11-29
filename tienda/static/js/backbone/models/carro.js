@@ -7,7 +7,8 @@ Loviz.Models.Carro = Backbone.Model.extend({
         return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id+'/';
     },
 	initialize : function () {
-        this.buscar_carro();
+        //En el modelo usuario hay un condicional cuando falla la busqueda
+        this.listenToOnce(window.models.usuario, "change", this.buscar_carro, this);
 	},
     defaults:{
         "propietario": null, 
@@ -19,61 +20,63 @@ Loviz.Models.Carro = Backbone.Model.extend({
         "envio": 0
     },
 	buscar_carro:function () {
+        
         var self = this;
+        var carrito = $.localStorage.get('carro')
         var usuario = window.models.usuario.toJSON().id
         if (usuario>0) {
-            this.fetch().fail(function () {
+            this.fetch()
+            .fail(function () {
                 self.set('propietario',usuario);
-            });
+            })
+            .done(function () {
+                
+                if (carrito !=null) {
+                    
+                    self.fucionar_carro(carrito);
+                };
+            })
         }else{
+            
             this.fetch({
                 data:$.param({session:galleta})
             }).fail(function () {
                 self.set('sesion_carro',galleta)
+            }).done(function () {
+                if (carrito !=null) {
+                    
+                    self.fucionar_carro(carrito);
+                };
             })
         }
     },
-    fucionar_carro:function(){
-        var carro_local = window.models.carro
-        var carro_server = this;
-        //comprobamos si tenemos productos en el carro local
-        if (carro_local.lineas>0) {
-            if (carro_server.lineas>0) {
-            };
-        }else{
-            //si no hay productos en el carro local nos quedamos con el carro del server
-            window.models.carro.set(carro_server.toJSON());
-        }
-        /*
-        debugger;
-    	if (window.models.carro !== this) {
-            debugger;
-            if (this.toJSON().lineas !==0 ) {
-                debugger;
-                var self = this;
-                var nueva_collecion = new Loviz.Collections.Lineas();
-                nueva_collecion.fetch({
-                    data:$.param({carro:this.id})
-                })
-                .done(function () {
-                    nueva_collecion.forEach(function (linea) {
-                        linea.set('carro',window.models.carro.id);
-                        linea.save();
-                    });
-                    self.set('estado','Fusionada');
-                    self.save().done(function () {
-                        window.models.carro.set('propietario',usuario)
-                        window.models.carro.save();
-                    });                    
-                });
-            }else{
-                window.models.carro.set({'propietario':usuario,'estado':'Abierto'});
-                this.set('estado','Fusionada');
-                this.save().done(function () {
-                    window.models.carro.save();
-                });
-            }
-    	};
-        */
+    fucionar_carro:function(carro_id){
+        var self = this;
+        $.localStorage.remove('carro');
+        var user = $.sessionStorage.get('usuario');
+        //Fucionar carro Local con el servidor
+        //verifico si el carro local fue salvado
+        
+        var nueva_collecion = new Loviz.Collections.Lineas();
+        nueva_collecion.fetch({
+            data:$.param({carro:carro_id})
+        })
+        .done(function () {
+            
+            nueva_collecion.forEach(function (linea) {
+                
+                linea.set('carro',self.id);
+                linea.save();
+            });
+            //me quedo con el carro del servidor
+            
+            var carro_fucion = new Loviz.Models.Carro({id:carro_id});
+            
+            carro_fucion.set({'estado':'Fusionada','propietario':user});
+            
+            carro_fucion.save().done(function () {
+                window.models.carro.fetch();
+            });
+        });
     },
 });

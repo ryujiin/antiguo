@@ -155,6 +155,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/perfil/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/ingresar/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

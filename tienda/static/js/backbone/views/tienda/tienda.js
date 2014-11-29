@@ -5,6 +5,7 @@ Loviz.Views.Tienda = Backbone.View.extend({
 		'blur .requerido':'verificar_input_requerido',
 		'blur input[type=password]':'verificar_pass',
 		'blur input[type=email]':'verificar_email',
+		'click .login_face' : 'login_face',
 	},
 	initialize : function ($el) {
 		var self = this;
@@ -107,4 +108,11 @@ Loviz.Views.Tienda = Backbone.View.extend({
 		 	return true
 		}
 	},
+	login_face:function (e) {
+		e.preventDefault();
+		if (window.models.carro.id!==undefined) {
+			$.localStorage.set('carro',window.models.carro.id);
+		};
+		location.href='/login/facebook/';
+	}
 });
