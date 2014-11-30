@@ -6,15 +6,16 @@ from django.conf import settings
 # Create your models here.
 class Producto(models.Model):
 	MARCAS = (
-    ('Loviz DelCarpio', 'Loviz DelCarpio'),
-    ('Doomckan DC', 'Doomckan DC'),
-)
+    	('Loviz DelCarpio', 'Loviz DelCarpio'),
+    	('Doomckan DC', 'Doomckan DC'),
+	)
 	nombre = models.CharField(max_length=120,blank=True,null=True)
 	full_name = models.CharField(max_length=120, unique=True,blank=True,null=True,editable=False)
 	marca = models.CharField(max_length=120, choices=MARCAS)
 	categoria = models.ForeignKey('Categoria',blank=True,null=True,related_name='cate')
 	estilo = models.ForeignKey('Estilo',blank=True,null=True)
 	color = models.ForeignKey('Color',blank=True,null=True,)
+	genero = models.ForeignKey('Genero',blank=True,null=True,)
 	slug = models.CharField(max_length=120,editable=False)
 	parientes = models.ManyToManyField('self',blank=True,null=True, related_name='colores')
 	activo = models.BooleanField(default=True)
@@ -86,6 +87,13 @@ class Talla(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
+
+class Genero(models.Model):
+	nombre = models.CharField(max_length=100)
+
+	def __unicode__(self):
+		return self.nombre
+    
 
 class Categoria(models.Model):
 	nombre = models.CharField(max_length=120)
