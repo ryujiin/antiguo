@@ -451,7 +451,18 @@
 
 
 {% block templatesjs %}
+
 		{% verbatim %}
+        <script id="catalogo_filtro_template" type="text/template">
+            <h3>{{titulo}}</h3>
+            <ul>
+            </ul>
+        </script>
+
+        <script id="catalogo_filtro_link_template" type="text/template">
+            <a class="interno" href="/catalago/{{slug}}/"><span class="icon-stop"></span>{{nombre}}</a>
+        </script>
+
 		<script id="productos_lista_template" type="text/template">
             <span class="icono icon-search"></span>
             <a class="interno" href="/producto/{{slug}}/{{id}}/">

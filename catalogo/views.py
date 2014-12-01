@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from models import Categoria,Producto
+from models import *
 from serializers import ProductoListaSerializer,ProductoSingleSereializer
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 
@@ -16,3 +16,22 @@ class ProductoListaViewsets(viewsets.ModelViewSet):
 class CatalogoViewsets(viewsets.ReadOnlyModelViewSet):
 	model = Producto
 	serializer_class = ProductoSingleSereializer
+
+
+##Catalogo##
+
+class ColorViewsets(viewsets.ReadOnlyModelViewSet):
+	model = Color
+
+class GeneroViewsets(viewsets.ReadOnlyModelViewSet):
+	model = Genero
+
+class TallaViewsets(viewsets.ReadOnlyModelViewSet):
+	model = Talla
+
+class SeccionViewsets(viewsets.ReadOnlyModelViewSet):
+	model = Seccion
+
+class EstiloViewsets(viewsets.ReadOnlyModelViewSet):
+	model = Estilo
+class CategoriaFieltroView()

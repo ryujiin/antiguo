@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf import settings
 
 from rest_framework import routers
-from catalogo.views import CategoriaViewsets,ProductoListaViewsets,CatalogoViewsets
+from catalogo.views import *
 from cliente.views import UsuarioViewSet
 from carro.views import LineasViewsets
 from ubigeo.views import RegionViewset
@@ -13,11 +13,19 @@ from tienda.views import HomeView
 router = routers.DefaultRouter()
 
 router.register(r'listaproducto', ProductoListaViewsets)
-router.register(r'categoria', CategoriaViewsets)
 router.register(r'catalogo', CatalogoViewsets,'productosingle')
 router.register(r'usuario',UsuarioViewSet)
 router.register(r'lineas',LineasViewsets,'lineas')
 router.register(r'ubigeo',RegionViewset,'ubigeo')
+
+##Catalogo##
+router.register(r'categorias', CategoriaViewsets,'categorias')
+router.register(r'colores', ColorViewsets,'colores')
+router.register(r'generos', GeneroViewsets,'generos')
+router.register(r'tallas', TallaViewsets,'tallas')
+router.register(r'secciones', SeccionViewsets,'secciones')
+router.register(r'estilos', EstiloViewsets,'estilos')
+
 
 urlpatterns = patterns('',
     # Examples:

@@ -78,22 +78,39 @@ class Producto(models.Model):
 
 class Color(models.Model):
 	nombre = models.CharField(max_length=100)
+	slug = models.SlugField(max_length=120,unique=True,editable=False,blank=True,null=True)
 
 	def __unicode__(self):
 		return self.nombre
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.nombre)
+		super(Color, self).save(*args, **kwargs)
 
 class Talla(models.Model):
 	nombre = models.CharField(max_length=100)
+	slug = models.SlugField(max_length=120,unique=True,editable=False,blank=True,null=True)
 
 	def __unicode__(self):
 		return self.nombre
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.nombre)
+		super(Talla, self).save(*args, **kwargs)
 
 class Genero(models.Model):
 	nombre = models.CharField(max_length=100)
+	slug = models.SlugField(max_length=120,unique=True,editable=False,blank=True,null=True)
 
 	def __unicode__(self):
 		return self.nombre
-    
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.nombre)
+		super(Genero, self).save(*args, **kwargs)
 
 class Categoria(models.Model):
 	nombre = models.CharField(max_length=120)
@@ -116,15 +133,27 @@ class Categoria(models.Model):
 
 class Seccion(models.Model):
 	nombre = models.CharField(max_length=120)
+	slug = models.SlugField(max_length=120,unique=True,editable=False,blank=True,null=True)
 
 	def __unicode__(self):
 		return self.nombre
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.nombre)
+		super(Seccion, self).save(*args, **kwargs)
 
 class Estilo(models.Model):
 	nombre = models.CharField(max_length=120)
+	slug = models.SlugField(max_length=120,unique=True,editable=False,blank=True,null=True)
 
 	def __unicode__(self):
 		return self.nombre
+
+	def save(self, *args, **kwargs):
+		if not self.slug:
+			self.slug = slugify(self.nombre)
+		super(Estilo, self).save(*args, **kwargs)
 
 class ProductoVariacion(models.Model):
 	producto = models.ForeignKey(Producto,related_name='variaciones')

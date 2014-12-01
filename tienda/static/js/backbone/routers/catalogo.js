@@ -8,8 +8,16 @@ Loviz.Routers.Catalogo = Backbone.Router.extend({
 	catalogo : function () {
 		console.log('estamos en el catalogo ');
 		window.views.catalogo_contenedor.collection.fetch();
+		if (this.categorias===undefined) {
+			var coleccion = new Loviz.Collections.Filtros();
+			coleccion.filtro='Categoria';
+			this.categorias = new Loviz.Views.CajaFiltros({
+				collection : coleccion
+			})
+		}
 	},
 	crear_catalogo:function () {
+
 	},
 	producto_single:function (slug,id) {
 		var modelo = new Loviz.Models.Producto({id:id});
