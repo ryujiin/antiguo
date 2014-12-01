@@ -6,7 +6,9 @@ Loviz.Views.CajaFiltros = Backbone.View.extend({
     
     initialize: function () {
         this.render();
-        this.collection.fetch();
+        if (this.collection.url) {
+            this.collection.fetch();
+        };
         this.listenTo(this.collection, "add", this.add_filtro, this);
     },
     render: function () {
@@ -17,6 +19,11 @@ Loviz.Views.CajaFiltros = Backbone.View.extend({
     },
     add_filtro:function (filtro) {
         var link = new Loviz.Views.Filtro_link({ model: filtro });
+        if (this.collection.cate) {
+            link.model.set('filtro',true);
+        }else{
+            link.model.set('titulo',this.collection.filtro);                        
+        }
         this.$('ul').append(link.render().el);
     }
 });

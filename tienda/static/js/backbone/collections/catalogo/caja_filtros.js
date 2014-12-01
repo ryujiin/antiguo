@@ -4,6 +4,10 @@ Loviz.Collections.Filtros = Backbone.Collection.extend({
 	url : function () {
 		if (this.filtro==='Categoria') {
 			return '/api/categorias/';
+		}else if(this.filtro === 'Genero'){
+			return '/api/generos/'
+		}else if (this.filtro==='Colores') {
+			return '/api/colores/'
 		};
 	}
 });

@@ -330,47 +330,13 @@
         </div>
         <div id="catalogo" class="overflow page">
             <div class="contenedor">
-                <aside class="lateral_menu left">
-                    <div class="bloque">
-                        <h3>Genero</h3>
-                        <ul>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Mujer</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Hombre</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Niños</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Niñas</a></li>
-                        </ul>
+                <div class="container-fluid">
+                    <div class="col-md-3">
+                        <aside class="lateral_menu"></aside>
                     </div>
-                    <div class="bloque">
-                        <h3>Precio</h3>
-                        <ul>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>S/. 20.00 y menores</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>S/. 30.00 y menores</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>S/. 40.00 y menores</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>S/. 50.00 y menores</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>S/. 50.00 y mayores</a></li>
-                        </ul>
+                    <div class="col-md-9">
+                        <div class="productos"></div>        
                     </div>
-                    <div class="bloque">
-                        <h3>Categoria</h3>
-                        <ul>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Pantuflas</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Sandalias</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Flats</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Botas</a></li>
-                        </ul>
-                    </div>
-                    <div class="bloque">
-                        <h3>Color</h3>
-                        <ul>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Fucsia</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Verde</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Rosado</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Lila</a></li>
-                            <li><a class="interno" href="/"><span class="icon-stop"></span>Estampado Multi</a></li>
-                        </ul>
-                    </div>
-                </aside>
-                <div class="productos rigth">
                 </div>
             </div>
         </div>
@@ -460,7 +426,11 @@
         </script>
 
         <script id="catalogo_filtro_link_template" type="text/template">
-            <a class="interno" href="/catalago/{{slug}}/"><span class="icon-stop"></span>{{nombre}}</a>
+            {%if filtro %}
+                <a class="interno" href="/catalogo/{{slug}}/"><span class="icon-stop"></span>{{nombre}}</a>
+            {%else%}
+                <a class="interno" href="?{{titulo}}={{slug}}"><span class="icon-stop"></span>{{nombre}}</a>            
+            {%endif%}
         </script>
 
 		<script id="productos_lista_template" type="text/template">

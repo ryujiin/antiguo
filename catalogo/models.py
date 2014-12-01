@@ -15,7 +15,6 @@ class Producto(models.Model):
 	categoria = models.ForeignKey('Categoria',blank=True,null=True,related_name='cate')
 	estilo = models.ForeignKey('Estilo',blank=True,null=True)
 	color = models.ForeignKey('Color',blank=True,null=True,)
-	genero = models.ForeignKey('Genero',blank=True,null=True,)
 	slug = models.CharField(max_length=120,editable=False)
 	parientes = models.ManyToManyField('self',blank=True,null=True, related_name='colores')
 	activo = models.BooleanField(default=True)
@@ -116,17 +115,18 @@ class Categoria(models.Model):
 	nombre = models.CharField(max_length=120)
 	seccion = models.ForeignKey('Seccion')
 	full_name = models.CharField(max_length=255,db_index=True, editable=False)
+	genero = models.ForeignKey('Genero',blank=True,null=True,)
 	slug = models.SlugField(max_length=120,unique=True,editable=False)
 	descripcion = models.TextField(blank=True,null=True)
 	activo = models.BooleanField(default=True)
 	imagen = models.ImageField(upload_to='categories',blank=True,null=True,max_length=250)
 	
 	def __unicode__(self):
-		return self.nombre
+		return ('%s de %s') %(self.nombre,self.genero)
 
 	def save(self, *args, **kwargs):
 		if not self.full_name:
-			self.full_name = ('%s - %s') %(self.seccion,self.nombre)
+			self.full_name = ('%s de %s- %s') %(self.seccion,self.genero,self.nombre)
 		if not self.slug:
 			self.slug = slugify(self.full_name)
 		super(Categoria, self).save(*args, **kwargs)

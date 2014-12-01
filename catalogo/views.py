@@ -34,4 +34,3 @@ class SeccionViewsets(viewsets.ReadOnlyModelViewSet):
 
 class EstiloViewsets(viewsets.ReadOnlyModelViewSet):
 	model = Estilo
-class CategoriaFieltroView()
