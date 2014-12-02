@@ -28,11 +28,6 @@
                     <h1 class="left">Loviz DelCarpio</h1>
                 </div>             
                  <ul class="menu left fuente_imprenta">
-                    <li><a class="interno" class="interno" href="/catalogo/">Catalogo</a></li>
-                    <li><a class="interno" class="interno" href="/custom/">Personalizar</a></li>
-                    <li><a class="interno" class="interno" href="/ofertas/">Oferta</a></li>
-                    <li><a class="interno" class="interno" href="/sobre-marca/">Sobre la marca</a></li>
-                    <li><a class="interno" class="interno" href="/blog/">Blog</a></li>
                 </ul>
                 <div id="mini_carrito" class="carrito-icon right fuente_imprenta">                    
                 </div>
@@ -421,8 +416,11 @@
 
 
 {% block templatesjs %}
-
 		{% verbatim %}
+        <script id="menu_principal_link_template" type="text/template">
+            <a class="interno" class="interno" href="{{slug}}">{{nombre}}</a>
+        </script>
+
         <script id="catalogo_filtro_template" type="text/template">
             <h3>{{titulo}}</h3>
             <ul>

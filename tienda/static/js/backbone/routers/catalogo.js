@@ -3,6 +3,7 @@ Loviz.Routers.Catalogo = Backbone.Router.extend({
 		"catalogo/" : "catalogo",
 		"producto/:slug/:id/" : 'producto_single',
 		"catalogo/:slug/" : "catalogo",
+		'lovizdc/:slug':'laucher',
 
 	},
 	initialize : function () {
@@ -38,4 +39,6 @@ Loviz.Routers.Catalogo = Backbone.Router.extend({
 			}			
 		});
 	},
+	laucher:function (slug) {
+	}
 })

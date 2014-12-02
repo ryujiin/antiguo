@@ -8,7 +8,7 @@ from catalogo.views import *
 from cliente.views import UsuarioViewSet
 from carro.views import LineasViewsets
 from ubigeo.views import RegionViewset
-from tienda.views import HomeView
+from tienda.views import HomeView,Menu_principalViewsets
 
 router = routers.DefaultRouter()
 
@@ -26,6 +26,8 @@ router.register(r'tallas', TallaViewsets,'tallas')
 router.register(r'secciones', SeccionViewsets,'secciones')
 router.register(r'estilos', EstiloViewsets,'estilos')
 
+##Tienda##
+router.register(r'tienda/link_menu',Menu_principalViewsets,'links');
 
 urlpatterns = patterns('',
     # Examples:
