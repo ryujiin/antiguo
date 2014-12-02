@@ -12,8 +12,8 @@ from tienda.views import HomeView,Menu_principalViewsets
 
 router = routers.DefaultRouter()
 
-router.register(r'listaproducto', ProductoListaViewsets)
-router.register(r'catalogo', CatalogoViewsets,'productosingle')
+router.register(r'catalogo', CatalogoViewsets,'catalogo')
+router.register(r'productoSingle', Producto_singleViewstes,'productosingle')
 router.register(r'usuario',UsuarioViewSet)
 router.register(r'lineas',LineasViewsets,'lineas')
 router.register(r'ubigeo',RegionViewset,'ubigeo')

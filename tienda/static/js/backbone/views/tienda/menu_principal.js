@@ -13,14 +13,15 @@ Loviz.Views.Menu_principal = Backbone.View.extend({
 				self.$el.removeClass('fijo');
 			}
 		});
-		this.cargar_links();
+		
 	},
 	cargar_links:function () {
 		var self = this;
+		/*
 		this.coleccionLink = new Loviz.Collections.Menu_principal();
 		this.coleccionLink.fetch().done(function () {
     		self.coleccionLink.forEach(self.addOne, self);			
-		})
+		})*/
 	},
 	addOne:function (link) {
 		var link_views = new Loviz.Views.Menu_principal_link({ model: link });

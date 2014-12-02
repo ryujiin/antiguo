@@ -4,8 +4,6 @@ Loviz.Views.Catalogo_contenedor = Backbone.View.extend({
 	},
 	initialize : function () {
 		var self = this;
-    	
-    	this.listenTo(this.collection, "add", this.addOne, this);
 
 		window.routers.catalogo.on('route',function(e){
 			self.aparecer(e);
@@ -13,6 +11,12 @@ Loviz.Views.Catalogo_contenedor = Backbone.View.extend({
 		window.routers.base.on('route',function(e){
 			self.aparecer(e);
 		});
+	},
+	render:function () {
+		if (this.collection.length===0) {
+	    	this.listenTo(this.collection, "add", this.addOne, this);
+		};
+    	this.collection.forEach(this.addOne, this);
 	},
 	aparecer:function (e) {
 		if (e === 'catalogo') {

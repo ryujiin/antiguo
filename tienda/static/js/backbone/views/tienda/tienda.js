@@ -117,5 +117,10 @@ Loviz.Views.Tienda = Backbone.View.extend({
 			$.localStorage.set('carro',window.models.carro.id);
 		};
 		location.href='/login/facebook/';
+	},
+	modificar_cabezera:function (titulo,descripcion) {
+		document.title=titulo + ' | LovizdelCarpio.com'
+		$('meta[name="description"]').remove();
+		$('head').append("<meta name='description' content='"+descripcion+"'>");
 	}
 });

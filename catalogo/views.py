@@ -14,10 +14,17 @@ class ProductoListaViewsets(viewsets.ModelViewSet):
 	model = Producto
 	serializer_class = ProductoListaSerializer
 
-class CatalogoViewsets(viewsets.ReadOnlyModelViewSet):
+class Producto_singleViewstes(viewsets.ModelViewSet):
 	model = Producto
 	serializer_class = ProductoSingleSereializer
+		
 
+class CatalogoViewsets(viewsets.ReadOnlyModelViewSet):
+	serializer_class = ProductoListaSerializer
+
+	def get_queryset(self):
+		queryset = Producto.objects.all()
+		return queryset
 
 ##Catalogo##
 

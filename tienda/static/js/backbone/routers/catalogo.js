@@ -8,7 +8,7 @@ Loviz.Routers.Catalogo = Backbone.Router.extend({
   	},
 	catalogo : function () {
 		if (this.catalogo_creado === undefined ) {
-			window.views.catalogo_contenedor.collection.fetch();
+			window.views.catalogo_contenedor.render();
 
 			if (this.filtros===undefined) {
 				window.views.catalogo_contenedor.crear_filtros();

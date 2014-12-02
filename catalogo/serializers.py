@@ -10,12 +10,13 @@ class ProductoListaSerializer(serializers.ModelSerializer):
 	en_oferta = serializers.SerializerMethodField('get_oferta')
 	precio = serializers.SerializerMethodField('get_precio')
 	precio_mostrar = serializers.SerializerMethodField('get_precio_descuento')
+	genero = serializers.SerializerMethodField('get_genero')
 	class Meta:
 		model=Producto
-		fields =('id','nombre','full_name','marca','categoria','estilo','color','slug','activo','thum','en_oferta','precio','precio_mostrar')
+		fields =('id','nombre','full_name','marca','categoria','estilo','genero','color','slug','activo','thum','en_oferta','precio','precio_mostrar')
 
 	def get_img_thum(self,obj):
-		img = obj.get_thum
+		img = obj.get_thum().url
 		return img
 
 	def get_oferta(self,obj):
@@ -26,6 +27,9 @@ class ProductoListaSerializer(serializers.ModelSerializer):
 
 	def get_precio_descuento(self,obj):
 		return obj.get_precio_oferta_lista
+
+	def get_genero(self,obj):
+		return obj.categoria.genero.slug
 
 class ProductoVariacionSerializer(serializers.ModelSerializer):
 	talla = serializers.CharField(read_only=True)
@@ -114,10 +118,11 @@ class CategoriaSerializer(serializers.ModelSerializer):
 	seccion = serializers.CharField(read_only=True)
 	imagen = serializers.SerializerMethodField('get_imagen')
 	banner = serializers.SerializerMethodField('get_banner')
+	genero_slug = serializers.SerializerMethodField('get_genero_slug')
 
 	class Meta:
 		model = Categoria
-		fields = ('id','nombre','slug','genero','activo','imagen','descripcion','full_name','seccion','banner')
+		fields = ('id','nombre','slug','genero','genero_slug','activo','imagen','descripcion','full_name','seccion','banner')
 
 	def get_banner(self,obj):
 		if obj.banner:
@@ -126,3 +131,6 @@ class CategoriaSerializer(serializers.ModelSerializer):
 	def get_imagen(self,obj):
 		if obj.imagen:
 			return obj.imagen.url
+
+	def get_genero_slug(self,obj):
+		return obj.genero.slug
