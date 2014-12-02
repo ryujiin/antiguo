@@ -61,6 +61,13 @@
         </div>
         <div id="pagar" class="page">
         </div>
+        <div id="landing_page">
+            <div class="contenedor">
+                <div class="banners container-fluid">
+                    
+                </div>
+            </div>
+        </div>
         <div id="carro" class="page">
         </div>
         <div id="home" class='page'>
@@ -416,7 +423,7 @@
 
 
 {% block templatesjs %}
-		{% verbatim %}
+	{% verbatim %}
         <script id="menu_principal_link_template" type="text/template">
             <a class="interno" class="interno" href="{{slug}}">{{nombre}}</a>
         </script>
@@ -425,6 +432,15 @@
             <h3>{{titulo}}</h3>
             <ul>
             </ul>
+        </script>
+
+        <script id="banner_categoria_template" type="text/template">
+            <figure>
+                <img src="{{banner}}" alt="">
+            </figure>
+            <div>
+                {{full_name}}
+            </div>
         </script>
 
         <script id="filtro_categoria_etiqueta_template" type="text/template">

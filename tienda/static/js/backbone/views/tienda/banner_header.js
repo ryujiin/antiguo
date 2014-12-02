@@ -17,7 +17,7 @@ Loviz.Views.Banner_header = Backbone.View.extend({
 		}else{
 			this.$el.addClass('no_home');
 		}
-		if (e === 'root' || e === 'catalogo') {
+		if (e === 'root' || e === 'catalogo' || e==='landing') {
 			this.$el.show();	
 		}else{
 			this.$el.hide();

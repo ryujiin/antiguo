@@ -20,6 +20,9 @@ Loviz.Views.Tienda = Backbone.View.extend({
 		window.routers.catalogo.on('route:catalogo',function(e){
 			self.$el.removeClass('inicio');
 		});
+		
+		this.menu_principal = new Loviz.Views.Menu_principal();
+    	this.banner_header = new Loviz.Views.Banner_header();
 	},
 	navega_home:function (e) {
 		if (e) {

@@ -112,7 +112,17 @@ class ProductoSingleSereializer(serializers.ModelSerializer):
 class CategoriaSerializer(serializers.ModelSerializer):
 	genero = serializers.CharField(read_only=True)
 	seccion = serializers.CharField(read_only=True)
+	imagen = serializers.SerializerMethodField('get_imagen')
+	banner = serializers.SerializerMethodField('get_banner')
 
 	class Meta:
 		model = Categoria
-		fields = ('id','nombre','slug','genero','activo','imagen','descripcion','full_name','seccion')
+		fields = ('id','nombre','slug','genero','activo','imagen','descripcion','full_name','seccion','banner')
+
+	def get_banner(self,obj):
+		if obj.banner:
+			return obj.banner.url
+
+	def get_imagen(self,obj):
+		if obj.imagen:
+			return obj.imagen.url

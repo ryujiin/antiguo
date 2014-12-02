@@ -120,6 +120,7 @@ class Categoria(models.Model):
 	descripcion = models.TextField(blank=True,null=True)
 	activo = models.BooleanField(default=True)
 	imagen = models.ImageField(upload_to='categories',blank=True,null=True,max_length=250)
+	banner = models.ImageField(upload_to='categories/banner/',blank=True,null=True,max_length=250)
 	
 	def __unicode__(self):
 		return ('%s de %s') %(self.nombre,self.genero)

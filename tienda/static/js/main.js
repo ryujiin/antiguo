@@ -23,15 +23,11 @@ $(document).ready(function(){
         collection: window.collections.lineas,
     }); 
 
-    window.views.home= new Loviz.Views.Home();
-    window.views.menu_principal = new Loviz.Views.Menu_principal();
-    window.views.banner_header = new Loviz.Views.Banner_header();
-    window.views.landing_nuevos_productos = new Loviz.Views.Landing_nuevos_productos();
-    window.views.slider_novedades = new Loviz.Views.Slider_home($('#novedades'));
-    window.views.slider_ofertas = new Loviz.Views.Slider_home($('#oferta'));
+    //Vista de Tienda
+    window.views.home = new Loviz.Views.Home();
     window.views.suscribcion = new Loviz.Views.Suscribcion();
     window.views.testimonios = new Loviz.Views.Testimonios();
-    window.views.redes = new Loviz.Views.Redes_sociales();
+    
 
     window.models.producto_single = new Loviz.Models.Producto()
     window.views.producto_single = new Loviz.Views.ProductoSingle({model:window.models.producto_single,}); 
@@ -39,6 +35,7 @@ $(document).ready(function(){
 
     //Vistas de Catalogos
     window.collections.catalogo = new Loviz.Collections.Catalogo();
+    window.collections.categorias = new Loviz.Collections.Categorias();
     window.views.catalogo_contenedor = new Loviz.Views.Catalogo_contenedor({
         collection:window.collections.catalogo,
     });

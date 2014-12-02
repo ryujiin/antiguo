@@ -15,9 +15,8 @@ Loviz.Views.Catalogo_contenedor = Backbone.View.extend({
 		});
 	},
 	aparecer:function (e) {
-		if (e === 'catalogo' || e ==='categoria_catalogo') {
+		if (e === 'catalogo') {
 			this.$el.show();
-			console.log(e)
 		}else{
 			this.$el.hide();
 		}
@@ -27,38 +26,6 @@ Loviz.Views.Catalogo_contenedor = Backbone.View.extend({
 		this.$('.productos').append(producto.render().el);
 	},
 	crear_categorias:function  () {
-		
-		/*
-		if (this.categorias===undefined) {
-			debugger;
-			var coleccion = new Loviz.Collections.Filtros();
-			coleccion.filtro='Categoria';
-			if (this.para_mujer===undefined) {
-				this.para_mujer = new Loviz.Views.Cate_CajaFiltros({
-					collection : coleccion,
-				});
-				this.para_mujer.genero='Mujeres';	
-			};
-			if (this.para_hombre===undefined) {
-				this.para_hombre = new Loviz.Views.Cate_CajaFiltros({
-					collection : coleccion,
-				});
-				this.para_hombre.genero='Hombres';		
-			};
-			if (this.kids===undefined) {
-				this.kids = new Loviz.Views.Cate_CajaFiltros({
-					collection : coleccion,
-				});
-				this.kids.genero="kid's";			
-			};
-			this.para_mujer.render();
-			this.para_hombre.render();
-			this.kids.render();
-			coleccion.fetch();
-			this.categorias = true;
-			debugger;
-		};
-		*/
 	},
 	crear_filtros : function () {		
 		if (this.estilos=== undefined) {

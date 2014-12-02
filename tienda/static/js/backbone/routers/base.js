@@ -1,6 +1,7 @@
 Loviz.Routers.Base = Backbone.Router.extend({
 	routes : {
 		"" : "root",
+		':slug/':'landing',		
 		'carro/':'carro',
 		'pagar/':'pagar',
 		'ingresar/':'ingresar',
@@ -45,5 +46,9 @@ Loviz.Routers.Base = Backbone.Router.extend({
 		if (window.views.pagar===undefined) {
 			window.views.pagar = new Loviz.Views.Pagar()
 		}
+	},
+	landing:function (slug) {
+		var modelo = window.views.tienda.menu_principal.coleccionLink.findWhere({slug : '/'+slug+'/'});
+		this.view_landing = new Loviz.Views.Landing({model:modelo});
 	}
 })
