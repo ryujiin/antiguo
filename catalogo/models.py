@@ -125,8 +125,7 @@ class Categoria(models.Model):
 		return ('%s de %s') %(self.nombre,self.genero)
 
 	def save(self, *args, **kwargs):
-		if not self.full_name:
-			self.full_name = ('%s de %s- %s') %(self.seccion,self.genero,self.nombre)
+		self.full_name = ('%s de %s - %s') %(self.seccion,self.genero,self.nombre)
 		if not self.slug:
 			self.slug = slugify(self.full_name)
 		super(Categoria, self).save(*args, **kwargs)

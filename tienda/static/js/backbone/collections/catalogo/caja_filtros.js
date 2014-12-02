@@ -8,6 +8,8 @@ Loviz.Collections.Filtros = Backbone.Collection.extend({
 			return '/api/generos/'
 		}else if (this.filtro==='Colores') {
 			return '/api/colores/'
-		};
+		}else if(this.filtro==='Estilos'){
+			return '/api/estilos/'
+		}
 	}
 });

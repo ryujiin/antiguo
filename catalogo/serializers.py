@@ -108,4 +108,11 @@ class ProductoSingleSereializer(serializers.ModelSerializer):
 		precio= obj.get_precio_oferta_lista()
 		precio ="%0.2f" %(precio)
 		return precio
-		
+
+class CategoriaSerializer(serializers.ModelSerializer):
+	genero = serializers.CharField(read_only=True)
+	seccion = serializers.CharField(read_only=True)
+
+	class Meta:
+		model = Categoria
+		fields = ('id','nombre','slug','genero','activo','imagen','descripcion','full_name','seccion')

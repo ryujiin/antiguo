@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from models import *
-from serializers import ProductoListaSerializer,ProductoSingleSereializer
+from serializers import ProductoListaSerializer,ProductoSingleSereializer,CategoriaSerializer
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 
 # Create your views here.
@@ -8,6 +8,7 @@ from rest_framework import viewsets
 
 class CategoriaViewsets(viewsets.ReadOnlyModelViewSet):
 	model = Categoria
+	serializer_class = CategoriaSerializer	
 
 class ProductoListaViewsets(viewsets.ModelViewSet):
 	model = Producto

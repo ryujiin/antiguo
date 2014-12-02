@@ -332,9 +332,13 @@
             <div class="contenedor">
                 <div class="container-fluid">
                     <div class="col-md-3">
-                        <aside class="lateral_menu"></aside>
+                        <aside class="lateral_menu">
+                            <div class="categorias"></div>
+                            <div class="facetas"></div>
+                        </aside>
                     </div>
                     <div class="col-md-9">
+                        <div class="filtros"></div>
                         <div class="productos"></div>        
                     </div>
                 </div>
@@ -423,6 +427,14 @@
             <h3>{{titulo}}</h3>
             <ul>
             </ul>
+        </script>
+
+        <script id="filtro_categoria_etiqueta_template" type="text/template">
+            <span class="icon-cross2"></span>{{full_name}}
+        </script>
+
+        <script id="filtro_etiqueta_template" type="text/template">
+            <span class="icon-cross2"></span>{{nombre}}
         </script>
 
         <script id="catalogo_filtro_link_template" type="text/template">
