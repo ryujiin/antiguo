@@ -5,10 +5,17 @@ Loviz.Views.Carro = Backbone.View.extend({
 	},
 	initialize: function () {
 		var self = this;
-		this.render();
+		window.routers.base.on('route',function(e){
+			self.borrar(e);
+		});
 	},
 	render:function () {
 		var html = this.template();
 	    this.$el.html(html);
 	},
+	borrar:function (e) {
+		if (e!=='carro') {
+			this.$el.empty();
+		};
+	}
 })

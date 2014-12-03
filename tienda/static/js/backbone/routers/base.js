@@ -14,7 +14,10 @@ Loviz.Routers.Base = Backbone.Router.extend({
 		window.app.state = "inicio";
 	},
 	carro : function () {
-		this.views_carro = new Loviz.Views.Carro();
+		if (this.views_carro===undefined) {
+			this.views_carro = new Loviz.Views.Carro();
+		};
+		this.views_carro.render();
 	},
 	pagina: function () {
 	},

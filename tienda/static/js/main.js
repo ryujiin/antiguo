@@ -8,7 +8,6 @@ $(document).ready(function(){
     //Vista Tienda
     window.views.tienda = new Loviz.Views.Tienda( $('body') );
 
-
     Backbone.history.start({
         pushState:true,
     });
