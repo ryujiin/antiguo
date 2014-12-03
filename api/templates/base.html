@@ -17,7 +17,7 @@
 	    <link rel="stylesheet" href="{% static "css/normalize.css/" %}" />
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="{% static "css/iconos.css/" %}" />
-	    <link rel="stylesheet" href="{% static "css/main.css/" %}" />
+	    <link rel="stylesheet" href="{% static "css/estilos.css/" %}" />
     {% endblock%}
     {% block extrastyles %}{% endblock %}
     {% block extrahead %}{% endblock %}
@@ -34,11 +34,12 @@
     <!--
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="//underscorejs.org/underscore-min.js"></script>
-	<script src="//backbonejs.org/backbone.js"></script>
+    <script src="{% static "js/vendor/backbone-min.js/" %}"></script>
+
     -->
     <script src="{% static "js/vendor/jquery.js/" %}"></script>
     <script src="{% static "js/vendor/underscore.js/" %}"></script>
-    <script src="{% static "js/vendor/backbone-min.js/" %}"></script>
+	<script src="//backbonejs.org/backbone.js"></script>        
 	<script src="{% static "js/vendor/swig.js/" %}"></script>
 
 
@@ -47,7 +48,15 @@
 	<script src="{% static "js/vendor/jquery.zoom.js/" %}"></script>
 
 	<script src="{% static "js/init.js/" %}"></script>
-	
+	<!--Models-->
+
+	<!--Collections-->
+	<!--Views-->
+	<script src="{% static "js/backbone/views/tienda/tienda.js/" %}"></script>
+	<script src="{% static "js/backbone/views/carro/carro.js/" %}"></script>
+	<!--routers-->
+	<script src="{% static "js/backbone/routers/base.js/" %}"></script>
+
 	<script src="{% static "js/main.js/" %}"></script>
 	{%endblock%}
 </body>
