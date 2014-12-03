@@ -8,7 +8,7 @@ from catalogo.views import *
 from cliente.views import UsuarioViewSet
 from carro.views import LineasViewsets
 from ubigeo.views import RegionViewset
-from tienda.views import HomeView,Menu_principalViewsets
+from tienda.views import HomeView
 
 router = routers.DefaultRouter()
 
@@ -20,14 +20,15 @@ router.register(r'ubigeo',RegionViewset,'ubigeo')
 
 ##Catalogo##
 router.register(r'categorias', CategoriaViewsets,'categorias')
-router.register(r'colores', ColorViewsets,'colores')
-router.register(r'generos', GeneroViewsets,'generos')
-router.register(r'tallas', TallaViewsets,'tallas')
-router.register(r'secciones', SeccionViewsets,'secciones')
-router.register(r'estilos', EstiloViewsets,'estilos')
+
+#router.register(r'colores', ColorViewsets,'colores')
+#router.register(r'generos', GeneroViewsets,'generos')
+#router.register(r'tallas', TallaViewsets,'tallas')
+#router.register(r'secciones', SeccionViewsets,'secciones')
+#router.register(r'estilos', EstiloViewsets,'estilos')
 
 ##Tienda##
-router.register(r'tienda/link_menu',Menu_principalViewsets,'links');
+#router.register(r'tienda/link_menu',Menu_principalViewsets,'links');
 
 urlpatterns = patterns('',
     # Examples:
