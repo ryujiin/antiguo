@@ -1,6 +1,6 @@
 Loviz.Views.Tienda = Backbone.View.extend({
 	events: {
-		'click a.interno' : 'linknormal',
+		'click .link' : 'linknormal',
 		'click .logo' : 'navega_home',
 		'blur .requerido':'verificar_input_requerido',
 		'blur input[type=password]':'verificar_pass',
@@ -10,25 +10,6 @@ Loviz.Views.Tienda = Backbone.View.extend({
 	initialize : function ($el) {
 		var self = this;
 		this.$el = $el;
-		window.routers.base.on('route',function(e){
-			if (e === 'root') {
-				self.$el.addClass('inicio');
-			}else{
-				self.$el.removeClass('inicio');
-			}
-		});
-		window.routers.catalogo.on('route:catalogo',function(e){
-			self.$el.removeClass('inicio');
-		});
-		
-		this.menu_principal = new Loviz.Views.Menu_principal();
-    	this.banner_header = new Loviz.Views.Banner_header();
-	},
-	navega_home:function (e) {
-		if (e) {
-			e.preventDefault();
-		};
-		window.routers.base.navigate('/', {trigger:true});
 	},
 	linknormal:function (e) {
 		e.preventDefault();
@@ -110,13 +91,6 @@ Loviz.Views.Tienda = Backbone.View.extend({
 		}else{
 		 	return true
 		}
-	},
-	login_face:function (e) {
-		e.preventDefault();
-		if (window.models.carro.id!==undefined) {
-			$.localStorage.set('carro',window.models.carro.id);
-		};
-		location.href='/login/facebook/';
 	},
 	modificar_cabezera:function (titulo,descripcion) {
 		document.title=titulo + ' | LovizdelCarpio.com'
