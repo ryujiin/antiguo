@@ -6,6 +6,3 @@ class HomeView(TemplateView):
 
 
 from rest_framework import viewsets
-
-class Menu_principalViewsets(viewsets.ReadOnlyModelViewSet):
-	model = Menu_principal

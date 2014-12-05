@@ -1,21 +1,26 @@
 Loviz.Views.Tienda = Backbone.View.extend({
 	events: {
+<<<<<<< HEAD
 		'click .link' : 'linknormal',
 		'click .logo' : 'navega_home',
 		'blur .requerido':'verificar_input_requerido',
 		'blur input[type=password]':'verificar_pass',
 		'blur input[type=email]':'verificar_email',
 		'click .login_face' : 'login_face',
+=======
+		'click .link':'link_intero',
+>>>>>>> loviz
 	},
 	initialize : function ($el) {
 		var self = this;
 		this.$el = $el;
 	},
-	linknormal:function (e) {
+	link_intero:function (e) {
 		e.preventDefault();
 		var link = e.currentTarget.pathname;
 		
 		window.routers.base.navigate(link, {trigger:true});
+<<<<<<< HEAD
 	},
 	obt_galleta : function(){
 		var galleta = $.cookie('carrito');
@@ -96,5 +101,7 @@ Loviz.Views.Tienda = Backbone.View.extend({
 		document.title=titulo + ' | LovizdelCarpio.com'
 		$('meta[name="description"]').remove();
 		$('head').append("<meta name='description' content='"+descripcion+"'>");
+=======
+>>>>>>> loviz
 	}
 });

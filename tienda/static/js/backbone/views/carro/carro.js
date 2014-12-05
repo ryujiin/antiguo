@@ -1,7 +1,10 @@
 Loviz.Views.Carro = Backbone.View.extend({
 	el:$('#carro'),
 	template : swig.compile($("#carro_template").html()),
+<<<<<<< HEAD
 
+=======
+>>>>>>> loviz
 	events :{
 	},
 	initialize: function () {
@@ -19,4 +22,4 @@ Loviz.Views.Carro = Backbone.View.extend({
 			this.$el.empty();
 		};
 	}
-});
+})
